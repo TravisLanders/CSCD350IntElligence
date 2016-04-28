@@ -1,0 +1,8 @@
+cd ./cscd350intelligence
+git fetch
+git merge origin/master
+ls 
+notepad .\java_fileName.java
+save
+git add [file_name or . for all]
+git push origin master
