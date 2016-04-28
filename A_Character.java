@@ -12,7 +12,7 @@ public abstract class A_Character
 	private SpecialAttack sa;
 	private Weapon weapon;
 	
-	private int check;
+	
 		
 	
 	
