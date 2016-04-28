@@ -5,4 +5,5 @@ ls
 notepad .\java_fileName.java
 save
 git add [file_name or . for all]
+git commit -m "Message about current commit"
 git push origin master
