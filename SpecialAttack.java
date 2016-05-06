@@ -1,5 +1,6 @@
-package Character;
+package Final;
 
-public class SpecialAttack {
+public class SpecialAttack 
+{
 
 }

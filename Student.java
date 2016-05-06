@@ -1,32 +1,36 @@
-package Character;
+package Final;
 
 public class Student extends A_Character {
 
 	private String name;
-	private int totalHP;
-	private int currentHP;
+	private double totalHP;
+	private double currentHP;
 	private double defence;
-	private double accuracy;
-	private double speed;
-	private Costume costume;
+	private A_Costume costume;
 	private SpecialAttack sa;
 	private Weapon weapon;
 	private boolean goodStudent;
+	private double attack;
 	
-	public Student(String name, int totalHP,int currentHP, double defence, double accuracy, double speed, Costume costume, SpecialAttack sa,Weapon weapon, boolean goodStudent)
+	public Student(String name, A_Costume costume, SpecialAttack sa,Weapon weapon, boolean goodStudent)
 	{
 		this.name = name;
-		this.totalHP = totalHP;
-		this.currentHP = currentHP;
-		this.defence = defence;
-		this.accuracy = accuracy;
-		this.speed = speed;
+		this.totalHP = 100;
+		this.currentHP = 100;
+		this.defence = .05;
 		this.costume=costume;
 		this.sa = sa;
 		this.weapon = weapon;
 		this.goodStudent = goodStudent;
+		this.attack = 15;
 	}
 	
+	
+	public double getAttack(){return this.attack;}
+	public void setAttack(double attack)
+	{
+		this.attack = attack;
+	}
 	
 	public Weapon getWeapon() {return this.getWeapon();}
 	public void setWeapon(Weapon weapon) 
@@ -44,32 +48,14 @@ public class Student extends A_Character {
 	}
 
 	
-	public Costume getCostume() {return this.costume;}
-	public void setCostume(Costume costume) 
+	public A_Costume getCostume() {return this.costume;}
+	public void setCostume(A_Costume costume) 
 	{
 		this.costume = costume;
 	}
 
 	
-	public double getSpeed(){return this.speed;}
-
-	@Override
-	public void setSpeed(double speed) 
-	{
-		this.speed = speed;
-		
-	}
-
-	@Override
-	public double getAccuracy() {
-		return this.accuracy;
-	}
-
-	@Override
-	public void setAccuracy(double accuracy) {
-		this.accuracy=acuracy;
-		
-	}
+	
 
 	@Override
 	public double getDefence() {
@@ -83,23 +69,23 @@ public class Student extends A_Character {
 	}
 
 	@Override
-	public int getCurrentHP() {
+	public double getCurrentHP() {
 		return this.currentHP;
 	}
 
 	@Override
-	public void setCurrentHP(int currentHP) {
+	public void setCurrentHP(double currentHP) {
 		this.currentHP= currentHP;
 		
 	}
 
 	@Override
-	public int getTotalHP() {
+	public double getTotalHP() {
 		return this.totalHP;
 	}
 
 	@Override
-	public void setTotalHP(int totalHP) {
+	public void setTotalHP(double totalHP) {
 		this.totalHP= totalHP;
 		
 	}

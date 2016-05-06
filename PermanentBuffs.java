@@ -1,5 +1,4 @@
-
-package Items;
+package Final;
 
 public class PermanentBuffs  extends A_Item
 {

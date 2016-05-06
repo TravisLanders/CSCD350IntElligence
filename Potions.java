@@ -1,4 +1,4 @@
-package Items;
+package Final;
 
 public class Potions  extends A_Item
 {
