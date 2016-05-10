@@ -6,7 +6,10 @@ public class Potions  extends A_Item
 	
 		private String name;
 		private String affects;
-		private int duration;
+		private double amount;
+		
+		
+		
 	
 	
 	@Override
@@ -21,16 +24,18 @@ public class Potions  extends A_Item
 
 		return this.affects;
 	}
-	
-	public int getDuration(){return this.duration;}
-	public void setDuration()
+
+	public double getAmount() 
 	{
-		this.duration--;
+		return amount;
+	}
+
+	public void setAmount(double amount)
+	{
+		this.amount = amount;
 	}
 	
-	public void performAdjustment()
-	{
-		
-	}
+	
+	
 
 }
