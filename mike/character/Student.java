@@ -14,6 +14,7 @@ public class Student extends A_Character
 	// private Weapon weapon;
 	private boolean goodStudent;
 	private double attack;
+	private boolean isTheLeader;
 
 	public Student(String name, A_Costume costume, boolean goodStudent)// SpecialAttack
 																		// sa,Weapon
@@ -21,25 +22,9 @@ public class Student extends A_Character
 																		// boolean
 																		// goodStudent)
 	{
-		this.name = name;
-		this.totalHP = 100;
-		this.currentHP = 100;
-		this.defence = .05;
-		this.costume = costume;
-		// this.sa = sa;
-		// this.weapon = weapon;
+		super(name, 100.0, 100.0, 0.50, costume, 15.0);
 		this.goodStudent = goodStudent;
-		this.attack = 15;
-	}
-
-	public double getAttack()
-	{
-		return this.attack;
-	}
-
-	public void setAttack(double attack)
-	{
-		this.attack = attack;
+		this.isTheLeader = false;
 	}
 
 	// public Weapon getWeapon() {return this.getWeapon();}
@@ -55,69 +40,6 @@ public class Student extends A_Character
 	 * }
 	 */
 
-	public A_Costume getCostume()
-	{
-		return this.costume;
-	}
-
-	public void setCostume(A_Costume costume)
-	{
-		this.costume = costume;
-	}
-
-	@Override
-	public double getDefence()
-	{
-		return this.defence;
-	}
-
-	@Override
-	public void setDefence(double defence)
-	{
-		this.defence = defence;
-
-	}
-
-	@Override
-	public double getCurrentHP()
-	{
-		return this.currentHP;
-	}
-
-	@Override
-	public void setCurrentHP(double currentHP)
-	{
-		this.currentHP = currentHP;
-
-	}
-
-	@Override
-	public double getTotalHP()
-	{
-		return this.totalHP;
-	}
-
-	@Override
-	public void setTotalHP(double totalHP)
-	{
-		this.totalHP = totalHP;
-
-	}
-
-	@Override
-	public String getName()
-	{
-		// TODO Auto-generated method stub
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name)
-	{
-		this.name = name;
-
-	}
-
 	public boolean isGoodStudent()
 	{
 		return goodStudent;
@@ -126,6 +48,16 @@ public class Student extends A_Character
 	public void setGoodStudent(boolean goodStudent)
 	{
 		this.goodStudent = goodStudent;
+	}
+	
+	public void setLeader()
+	{
+		this.isTheLeader = true;
+	}
+	
+	public boolean isLeader()
+	{
+		return this.isTheLeader;
 	}
 
 }

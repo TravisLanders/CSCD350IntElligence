@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Party
 {
-	private ArrayList<A_Character> party = new ArrayList<A_Character>();
+	private ArrayList<Student> party = new ArrayList<Student>();
 	private Student leader;
 	public Party(Student player)
 	{
@@ -18,9 +18,10 @@ public class Party
 		if(party.size() < 6)
 		{
 			newStudent.setGoodStudent(true);
+			newStudent.setCurrentHP(50.0);
 			party.add(newStudent);
 			System.out.println(newStudent.getName() + " has been added to the party!");
-			System.out.println("Party size is now" + party.size());
+			System.out.println("Party size is now " + party.size());
 		}
 		
 		else
@@ -29,7 +30,7 @@ public class Party
 		}
 	}
 	
-	public A_Character swap()
+	public Student swap()
 	{
 		Scanner scanner = new Scanner(System.in);
 		for(int i = 0; i < party.size(); i++)
@@ -63,11 +64,11 @@ public class Party
 			System.out.println("Invalid input. Try again");
 			scanner.close();
 			//return swap();
-			return null;
+			return swap();
 		}		
 	}
 	
-	protected A_Character swapStudent(String str)
+	protected Student swapStudent(String str)
 	{
 		try
 		{
@@ -90,5 +91,16 @@ public class Party
 	public int getSize()
 	{
 		return this.party.size();
+	}
+	
+	public boolean removeMember(Student characterIn)
+	{
+		if(characterIn.isLeader())
+		{
+			System.out.println("You are almost defeated! Swap somebody in to continue playing!");
+			characterIn.setCurrentHP(1);
+			return false;
+		}
+		return this.party.remove(characterIn);
 	}
 }

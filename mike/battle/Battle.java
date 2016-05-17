@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class Battle
 {
-	protected A_Character champion;
+	protected Student champion;
 	protected Student opponent;
 	protected boolean isLive = true;
 	protected boolean championCanAttack = true;
@@ -15,6 +15,8 @@ public class Battle
 	private int damage = 15;
 	private Scanner scanner;
 	private Party party;
+	private int championStunCounter = 4;
+	private int opponentStunCounter = 4;
 	
 	public Battle(Student championIn, Student opponentIn, Party partyIn)
 	{
@@ -31,15 +33,7 @@ public class Battle
 		while(isLive)
 		{
 			System.out.println("You currently have " + champion.getCurrentHP() + "HP");
-			if(visibleDamage && isLive)
-			{
-				System.out.println(this.opponent.getName() + " currently has " + this.opponent.getCurrentHP() + " HP");
-			}
-			
-			else if(isLive)
-			{
-				System.out.println(this.opponent.getName() + " currently has an unknown amount of HP");
-			}
+			printOpponentHP();
 			
 			if(championCanAttack && isLive)
 			{
@@ -51,8 +45,10 @@ public class Battle
 				opponentAttack();
 			}
 			opponentCanAttack = true;
+			championStunCounter++;
+			opponentStunCounter++;
 		}
-		scanner.close();
+		//scanner.close();
 	}
 	
 	private void championAttack()
@@ -70,24 +66,14 @@ public class Battle
 				str = "";
 				break;
 				
-			case "p":
-				System.out.println("You have stunned " + this.opponent.getName() + " for one turn! Go again!");
-				opponentCanAttack = false;
-				championAttack();
+			case "p":				
+				stunOpponent();
 				break;
 				
 			case "a":
 				damage = random.nextInt(100);
 				this.opponent.setCurrentHP(this.opponent.getCurrentHP() - damage);
-				if(visibleDamage)
-				{
-					System.out.println("You have done " + damage + " damage to " + this.opponent.getName());					
-				}
-				
-				else
-				{
-					System.out.println("You have done an unknown amount of damage to " + this.opponent.getName());					
-				}
+				printOpponentDamage();
 				break;
 				
 			case "h":
@@ -115,15 +101,59 @@ public class Battle
 		*/
 	}
 	
+	private void stunOpponent()
+	{
+		if(championStunCounter >= 4)
+		{
+			System.out.println("You have stunned " + this.opponent.getName() + " for one turn! Go again!");
+			opponentCanAttack = false;
+			championStunCounter = 0;
+			championAttack();
+		}
+		
+		else
+		{
+			System.out.println("You have stunned too recently to stun again!");
+			championAttack();
+		}
+	}
+	
+	private void printOpponentHP()
+	{
+		if(visibleDamage && isLive)
+		{
+			System.out.println(this.opponent.getName() + " currently has " + this.opponent.getCurrentHP() + " HP");
+		}
+		
+		else if(isLive)
+		{
+			System.out.println(this.opponent.getName() + " currently has an unknown amount of HP");
+		}
+	}
+	
+	private void printOpponentDamage()
+	{
+		if(visibleDamage)
+		{
+			System.out.println("You have done " + damage + " damage to " + this.opponent.getName());					
+		}
+		
+		else
+		{
+			System.out.println("You have done an unknown amount of damage to " + this.opponent.getName());					
+		}
+	}
+	
 	private void opponentAttack()
 	{
 		Random random = new Random();
-		random.setSeed(4);
+		//random.setSeed(4);
 		int seed = random.nextInt(4);
-		if(seed == 1)
+		if(seed == 1 && opponentStunCounter >= 4)
 		{
 			this.championCanAttack = false;
 			System.out.println("You have been stunned! You will lose a turn!");
+			opponentStunCounter = 0;
 			opponentAttack();
 		}
 		
@@ -151,8 +181,26 @@ public class Battle
 	
 	private void onDefeat()
 	{
-		System.out.println("You have been defeated!");
-		isLive = false;
+		if(this.champion.isLeader() && party.getSize() > 1)
+		{
+			System.out.println("You are almost defeated! Swap somebody in to continue playing!");
+			this.champion.setCurrentHP(1);
+			this.champion = party.swap();
+		}
+		
+		else if(this.champion.isLeader() && party.getSize() == 1)
+		{
+			System.out.println("You have been defeated, and you have no party to protect you!\nGame over!");
+			isLive = false;	
+		}
+		
+		else
+		{
+			System.out.println(this.champion.getName() + " has been defeated! Swap somebody in to continue playing!");
+			party.removeMember(this.champion);
+			this.champion = party.swap();
+		}
+
 	}
 	
 	private void onVictory()
