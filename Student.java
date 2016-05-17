@@ -1,5 +1,7 @@
 package Final;
 
+import java.io.FileNotFoundException;
+
 public class Student extends A_Character {
 
 	private String name;
@@ -12,7 +14,7 @@ public class Student extends A_Character {
 	private boolean goodStudent;
 	private double attack;
 	
-	public Student(String name, A_Costume costume, SpecialAttack sa,Weapon weapon, boolean goodStudent)
+	public Student(String name, A_Costume costume, SpecialAttack sa,Weapon weapon, boolean goodStudent) throws FileNotFoundException
 	{
 		this.name = name;
 		this.totalHP = 100;
@@ -20,7 +22,7 @@ public class Student extends A_Character {
 		this.defence = .05;
 		this.costume=costume;
 		this.sa = sa;
-		this.weapon = weapon;
+		this.weapon = new Weapon();
 		this.goodStudent = goodStudent;
 		this.attack = 15;
 	}
@@ -32,7 +34,7 @@ public class Student extends A_Character {
 		this.attack = attack;
 	}
 	
-	public Weapon getWeapon() {return this.getWeapon();}
+	public Weapon getWeapon() {return this.weapon;}
 	public void setWeapon(Weapon weapon) 
 	{
 		this.weapon = weapon;

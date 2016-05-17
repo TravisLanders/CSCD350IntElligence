@@ -10,6 +10,11 @@ public class BossTile extends A_Tile
 		this.teach = teach;
 		
 	}
+	public void initiateBattle()
+	{
+		
+		//call mikes boss battle class with student, teacher and party
+	}
 	
 	
 	   

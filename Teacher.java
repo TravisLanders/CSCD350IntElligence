@@ -5,8 +5,8 @@ package Final;
 public class Teacher extends A_Character {
 
 	private String name;
-	private int totalHP;
-	private int currentHP;
+	private double totalHP;
+	private double currentHP;
 	private double defence;
 	
 	private A_Costume costume;
@@ -15,15 +15,15 @@ public class Teacher extends A_Character {
 	private double attack;
 	
 	
-	public Teacher(String name, A_Costume costume, SpecialAttack sa,Weapon weapon)
+	public Teacher(String name,A_Costume costume, Weapon weapon)
 	{
 		this.name = name;
-		this.totalHP = 100;
-		this.currentHP = 100;
-		this.attack = 15;
-		this.defence = .05;
+		//this.totalHP = 100;
+		//this.currentHP = 100;
+		//this.attack = 15;
+		//this.defence = .05;
 		this.costume=costume;
-		this.sa = sa;
+		//this.sa = sa;
 		this.weapon = weapon;
 		
 	}
@@ -76,23 +76,23 @@ public class Teacher extends A_Character {
 	}
 
 	@Override
-	public int getCurrentHP() {
+	public double getCurrentHP() {
 		return this.currentHP;
 	}
 
 	@Override
-	public void setCurrentHP(int currentHP) {
+	public void setCurrentHP(double currentHP) {
 		this.currentHP= currentHP;
 		
 	}
 
 	@Override
-	public int getTotalHP() {
+	public double getTotalHP() {
 		return this.totalHP;
 	}
 
 	@Override
-	public void setTotalHP(int totalHP) {
+	public void setTotalHP(double totalHP) {
 		this.totalHP= totalHP;
 		
 	}

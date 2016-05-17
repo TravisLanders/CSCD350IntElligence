@@ -17,9 +17,9 @@ public class Weapon
 			    ArrayList<String> adjs = new ArrayList<String>();
 			    Scanner nfin = new Scanner(new File("nouns.txt"));
 			    Scanner afin = new Scanner(new File("adj.txt"));
-			    Random nRand = new Random(4308);
-			    Random aRand = new Random(398);
-			    Random rRand = new Random(100);
+			    Random nRand = new Random();
+			    Random aRand = new Random();
+			    Random rRand = new Random();
 			    String name;
 			    while(nfin.hasNext())
 			    {
@@ -47,8 +47,12 @@ public class Weapon
 		            name =("The "+adjs.get(adj)+ "-" + nouns.get(noun));
 		         this.name = name;
 		         this.attack =10;
+		         
 
 		}
+		
+		public String getName(){return this.name;}
+		public double getAttack(){return this.attack;}
 		
 		
 		

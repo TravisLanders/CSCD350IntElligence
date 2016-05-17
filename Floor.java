@@ -1,5 +1,6 @@
 package Final;
 
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 public class Floor 
@@ -7,12 +8,14 @@ public class Floor
 
 		private A_Tile[][] floor;
 		private Random rand;
+		private int level =0;
 		
 		public A_Tile[][] getFloor(){return this.floor;}
 		
 		
-		public Floor(Teacher t1,Teacher t2,Student s1,Student s2,Student s3)
+		public Floor(Teacher t1,Teacher t2,Student s1,Student s2,Student s3) throws FileNotFoundException
 		{
+			this.level= this.getLevel() +1;
 			this.floor = new A_Tile[4][4];
 			this.rand = new Random(4);
 			int teachers = 2;
@@ -26,6 +29,11 @@ public class Floor
 					while(!placed)
 					{
 						int num = rand.nextInt(4);
+						if(x==0 && y==0)
+						{
+							floor[x][y] = new BlankTile("blank");
+						}
+						
 						if(num == 0 && teachers>0)
 						{
 							if(teachers ==2)
@@ -66,4 +74,12 @@ public class Floor
 			}
 			
 		}
+
+
+		public int getLevel() {
+			return level;
+		}
+
+
+		
 }

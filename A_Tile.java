@@ -12,11 +12,14 @@ public abstract class A_Tile
     private I_TileAction CurrentAction;
     private boolean visibility;
     
+    
 	public A_Tile(String input)
 	{
 		this.type = input;
 		this.visibility = false;
 	}
+	
+	
 	
 	public boolean getVisibility()
 	{
