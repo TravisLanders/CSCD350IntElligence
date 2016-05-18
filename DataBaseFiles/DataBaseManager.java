@@ -43,7 +43,7 @@ public class DataBaseManager
             stmt.executeUpdate("insert into Nouns  values ('" + temp +"', " + index+ ");");
             index++;
          }
-            this.dataBase.close();
+            
       }
       
       catch ( Exception e ) 
@@ -67,7 +67,7 @@ public class DataBaseManager
             stmt.executeUpdate("insert into Adjective  values ('" + temp +"', " + index+ ");");
             index++;
          }
-            this.dataBase.close();
+           
       }
       
       catch ( Exception e ) 
@@ -77,6 +77,108 @@ public class DataBaseManager
     	}
    
     }
+    
+    public void closeDataBase()
+    {
+      try
+      {
+          this.dataBase.close();
+      }
+      catch ( Exception e ) 
+    	{
+    		System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+    		System.exit(0);
+    	}
+    
+    }
+    
+    public String getNoun(int index)
+    {
+       String noun = "";
+       if(index <0 || index > 4306)
+       {
+         System.out.println(" Index Not within Bounds ");
+         return noun;
+       }
+      try
+      {
+        
+         stmt = dataBase.createStatement();
+         ResultSet rs = stmt.executeQuery("SELECT * FROM Nouns WHERE Number = " + index + ";");
+         noun = rs.getString("Noun");
+         
+         
+           
+      }
+      
+      catch ( Exception e ) 
+    	{
+    		System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+    		System.exit(0);
+    	}
+      
+      return noun;
+
+    }
+    
+     public String getAdj(int index)
+    {
+       String adj = "";
+       if(index <0 || index > 397)
+       {
+         System.out.println(" Index Not within Bounds ");
+         return adj;
+       }
+      try
+      {
+        
+         stmt = dataBase.createStatement();
+         ResultSet rs = stmt.executeQuery("SELECT * FROM Adjective WHERE Number = " + index + ";");
+         adj = rs.getString("Adjective");
+         
+         
+           
+      }
+      
+      catch ( Exception e ) 
+    	{
+    		System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+    		System.exit(0);
+    	}
+      
+      return adj;
+
+    }
+
+    public String getName(int index)
+    {
+       String name = "";
+       if(index <0 || index > 25)
+       {
+         System.out.println(" Index Not within Bounds ");
+         return name;
+       }
+      try
+      {
+        
+         stmt = dataBase.createStatement();
+         ResultSet rs = stmt.executeQuery("SELECT * FROM NameList WHERE Number = " + index + ";");
+         name = rs.getString("Name");
+         
+         
+           
+      }
+      
+      catch ( Exception e ) 
+    	{
+    		System.err.println( e.getClass().getName() + ": " + e.getMessage() );
+    		System.exit(0);
+    	}
+      
+      return name;
+
+    }
+
 } 
 
 
