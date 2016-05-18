@@ -3,7 +3,7 @@ package Final;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
-public class TeacherTom extends Teacher
+public class TeacherXu extends Teacher
 {
 
 	private String name;
@@ -16,12 +16,12 @@ public class TeacherTom extends Teacher
 	private Weapon weapon;
 	private double attack;
 	
-	public TeacherTom() throws FileNotFoundException
+	public TeacherXu() throws FileNotFoundException
 	{
 		super("Tom",new CostumeOptometrist(),new Weapon());
 		
 		this.totalHP = 350;
-		this.currentHP = 3500;
+		this.currentHP = 350;
 		this.defence = .15;
 		this.weapon = new Weapon();
 		this.attack = 30;

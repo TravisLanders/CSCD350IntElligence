@@ -35,7 +35,7 @@ public class TeacherTony extends Teacher
 	
 	public boolean specialAgainst()
 	{
-		System.out.println("You ask questions about subjetcs covered in earlier lectures, Tony loses a turn due to sheer rage");
+		System.out.println("You ask questions about subjects covered in earlier lectures, Tony loses a turn due to sheer rage");
 		return true;
 	}
 	

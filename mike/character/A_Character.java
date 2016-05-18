@@ -13,8 +13,24 @@ public abstract class A_Character
 	//private Weapon weapon;
 	private double attack;
 	
-	public abstract double getAttack();
-	public abstract void setAttack(double attack);
+	public A_Character(String nameIn, double totalHPIn, double currentHPIn, double defenceIn, A_Costume costumeIn, double attackIn)
+	{
+		this.name = nameIn;
+		this.totalHP = totalHPIn;
+		this.currentHP = currentHPIn;
+		this.defence = defenceIn;
+		this.costume = costumeIn;
+		this.attack = attackIn;
+	}
+	
+	public double getAttack()
+	{
+		return this.attack;
+	}
+	public void setAttack(double attackIn)
+	{
+		this.attack = attackIn;
+	}
 	
 	//public abstract Weapon getWeapon();
 	
@@ -24,23 +40,56 @@ public abstract class A_Character
 	
 	//public abstract void setSA(SpecialAttack sa);
 	
-	public abstract A_Costume getCostume();
-	public abstract void setCostume(A_Costume costume);
+	public A_Costume getCostume()
+	{
+		return this.costume;
+	}
+	
+	public void setCostume(A_Costume costumeIn)
+	{
+		this.costume = costumeIn;
+	}
 	
 	
 	
-	public abstract double getDefence() ;
+	public double getDefence()
+	{
+		return this.defence;
+	}
 	
-	public abstract void setDefence(double defence) ;
+	public void setDefence(double defenceIn)
+	{
+		this.defence = defenceIn;
+	}
 	
-	public abstract double getCurrentHP() ;
-	public abstract void setCurrentHP(double currentHP) ;
+	public double getCurrentHP()
+	{
+		return this.currentHP;
+	}
 	
-	public abstract double getTotalHP() ;
+	public void setCurrentHP(double currentHPIn)
+	{
+		this.currentHP = currentHPIn;
+	}
 	
-	public abstract void setTotalHP(double totalHP);
+	public double getTotalHP()
+	{
+		return this.totalHP;
+	}
 	
-	public abstract String getName() ;
-	public abstract void setName(String name) ;
+	public void setTotalHP(double totalHPIn)
+	{
+		this.totalHP = totalHPIn;
+	}
+	
+	public String getName()
+	{
+		return this.name;
+	}
+	
+	public void setName(String nameIn)
+	{
+		this.name = nameIn;
+	}
 	
 }

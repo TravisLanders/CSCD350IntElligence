@@ -6,9 +6,16 @@ public class PermanentBuffs  extends A_Item
 	
 		private String name;
 		private String affects;
+		private double amount;
 		
 	
 	
+		public void performAdjustment(Student s1)
+		{
+			//permanently increases certain attribute.
+		}
+		
+		
 	@Override
 	public String getName() 
 	{
@@ -22,9 +29,16 @@ public class PermanentBuffs  extends A_Item
 		return this.affects;
 	}
 	
-	public void performAdjustment()
+	
+
+	public double getAmount() 
 	{
-		//permanently increases certain attribute.
+		return amount;
+	}
+
+	public void setAmount(double amount)
+	{
+		this.amount = amount;
 	}
 
 }
