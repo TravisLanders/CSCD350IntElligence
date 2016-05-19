@@ -9,13 +9,13 @@ package Final;
 public abstract class A_Tile 
 {
 	private String type;
-    private I_TileAction CurrentAction;
+    
     private boolean visibility;
     
     
-	public A_Tile(String input)
+	public A_Tile()
 	{
-		this.type = input;
+		
 		this.visibility = false;
 	}
 	
@@ -36,27 +36,9 @@ public abstract class A_Tile
 		return type;
 	}
 	
-	public void setTileAction(I_TileAction action)
-	{
-		this.CurrentAction = action;
-	}
 	
-	public void setType(String input)
-	{
-		if(input.equals("Blank"))
-		{
-			setTileAction (new BlankAction());
-		}
-		else if(input.equals("Loot"))
-		{
-			setTileAction( new LootAction());
-		}
-	}
 	
-	public void HandleEvent()
-	{
-		this.CurrentAction.TakeAction();
-	}
+	
 
 	
 }

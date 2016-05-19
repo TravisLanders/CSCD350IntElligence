@@ -3,10 +3,32 @@ package Final;
 public class BlankTile extends A_Tile
 {
 
-	public BlankTile(String input) 
+	
+    private boolean visibility;
+	
+	public BlankTile() 
 	{
-		super(input);
-		this.setTileAction(new BlankAction());
+		
+		this.visibility =false;
+	}
+	
+	public void blankAction()
+	{
+		
+		this.visibility = true;
+	}
+
+	public boolean isVisibility() {
+		return visibility;
+	}
+
+	public void setVisibility(boolean visibility) {
+		this.visibility = visibility;
+	}
+	
+	public String getType()
+	{
+		return "blank";
 	}
 	
 	

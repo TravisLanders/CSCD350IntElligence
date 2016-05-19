@@ -1,6 +1,8 @@
 package Final;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Random;
 
 //import A_Item loot;
 /*BlankTile created by Homero Gonzalez team Int-Elligence
@@ -15,13 +17,23 @@ public class LootTile extends A_Tile
 	//A_Item loot;
 	private Weapon weapon;
 	private A_Item item;
+	private boolean visibility;
+	private String type;
 	
-	public LootTile(String input) throws FileNotFoundException 
+	public LootTile() throws FileNotFoundException 
 	{
-		super(input);
-		//this.setTileAction(new LootAction());
+		this.type = "loot";
+		this.visibility=false;
 		this.weapon = new Weapon();
-		//need to create a method that returns a random method
+		//need to create a method that returns a random item
+	}
+	
+	public  void lootAction(ArrayList<A_Item> inventory)
+	{
+		inventory.add(getWeapon());
+		inventory.add(A_Item.getRandomItem());
+		
+		
 	}
 	
 	
@@ -43,6 +55,29 @@ public class LootTile extends A_Tile
 
 	public void setItem(A_Item item) {
 		this.item = item;
+	}
+	
+	public String getType()
+	{
+		return "loot";
+	}
+
+
+
+
+
+
+	public boolean isVisibility() {
+		return visibility;
+	}
+
+
+
+
+
+
+	public void setVisibility(boolean visibility) {
+		this.visibility = visibility;
 	}
 
 
