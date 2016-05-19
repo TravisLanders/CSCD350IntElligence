@@ -17,6 +17,8 @@ public class Battle
 	private Party party;
 	private int championStunCounter = 4;
 	private int opponentStunCounter = 4;
+	private double championAttackBonus = 1.0;
+	private double championDefenseBonus = 1.0;
 	
 	public Battle(Student championIn, Student opponentIn, Party partyIn)
 	{
@@ -28,6 +30,12 @@ public class Battle
 	public void beginBattle()
 	{
 		Scanner scanner = new Scanner(System.in);
+		System.out.println("You are about to enter battle with " + this.opponent.getName() + ", who is dressed as a " + this.opponent.getCostume().toString());
+		if(this.party.getSize() > 1)
+		{
+			System.out.println("Who would you like to enter as your champion?");
+			this.champion = party.swap();
+		}
 		System.out.println("Begin battle");
 		
 		while(isLive)
@@ -71,13 +79,13 @@ public class Battle
 				break;
 				
 			case "a":
-				damage = random.nextInt(100);
+				damage = (int) (random.nextInt(100) * this.championAttackBonus);
 				this.opponent.setCurrentHP(this.opponent.getCurrentHP() - damage);
 				printOpponentDamage();
 				break;
 				
 			case "h":
-				int health = random.nextInt(10);
+				int health = (int) (random.nextInt(10) / this.championDefenseBonus);
 				this.champion.setCurrentHP(this.champion.getCurrentHP() + health);
 				System.out.println("You have healed yourself " + health + " HP.");
 				break;
@@ -215,6 +223,20 @@ public class Battle
 			{
 				party.addMember(this.opponent);
 			}
+		}
+	}
+	
+	private void calcBonuses()
+	{
+		if(this.champion.getCostume().getSpecialty() == this.opponent.getCostume().getSpecialty())		
+		{
+			this.championAttackBonus = 1.5;
+			this.championDefenseBonus = 1.5;
+		}
+		
+		if(this.champion.getCostume().getSpecialty() == this.opponent.getCostume().getPair())
+		{
+			this.championDefenseBonus = 1.5;
 		}
 	}
 }

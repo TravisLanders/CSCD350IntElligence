@@ -6,7 +6,13 @@ public class CostumeDoctor extends A_Costume
 {
 	public CostumeDoctor()
 	{
-		super(Specialty.HEALER, Pair.NONE);
+		super(Specialty.HEALER, Specialty.NONE);
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "doctor";
 	}
 
 	/*

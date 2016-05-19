@@ -35,7 +35,7 @@ public class Party
 		Scanner scanner = new Scanner(System.in);
 		for(int i = 0; i < party.size(); i++)
 		{
-			System.out.println(party.get(i).getName() + " has a current HP of " + party.get(i).getCurrentHP());
+			System.out.println(party.get(i).getName() + " has a current HP of " + party.get(i).getCurrentHP() +" and is dressed as a " + party.get(i).getCostume().toString());
 		}
 		
 		for(int i = 0; i < party.size(); i++)

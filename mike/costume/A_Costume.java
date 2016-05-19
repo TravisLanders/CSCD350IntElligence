@@ -4,18 +4,13 @@ public abstract class A_Costume
 {
 	public enum Specialty
 	{
-		C, CSHARP, ASSEMBLY, JAVA, SECURITY, PYTHON, OS, MATH, ANDROID, DATAMINING, FRESHMAN, HEALER;
-	}
-	
-	public enum Pair
-	{
-		C, CSHARP, ASSEMBLY, JAVA, SECURITY, PYTHON, OS, MATH, ANDROID, DATAMINING, NONE;
+		C, CSHARP, ASSEMBLY, JAVA, SECURITY, PYTHON, OS, MATH, ANDROID, DATAMINING, FRESHMAN, HEALER, NONE;
 	}
 	
 	protected Specialty specialty;
-	protected Pair pair;
+	protected Specialty pair;
 	
-	public A_Costume(Specialty specialtyIn, Pair pairIn)
+	public A_Costume(Specialty specialtyIn, Specialty pairIn)
 	{
 		this.specialty = specialtyIn;
 		this.pair = pairIn;
@@ -26,10 +21,12 @@ public abstract class A_Costume
 		return this.specialty;
 	}
 	
-	public Pair getPair()
+	public Specialty getPair()
 	{
 		return this.pair;
 	}
+	
+	public abstract String toString();
 	
 	/*
 	public A_Costume equipCostume(A_Character character)
