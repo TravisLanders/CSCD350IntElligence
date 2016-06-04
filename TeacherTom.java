@@ -3,6 +3,7 @@ package Final;
 import java.io.FileNotFoundException;
 import java.util.Random;
 
+
 public class TeacherTom extends Teacher
 {
 
@@ -15,6 +16,8 @@ public class TeacherTom extends Teacher
 	private SpecialAttack sa;
 	private Weapon weapon;
 	private double attack;
+   private String[] quotes = {"Why is there a public variable in your Student Class!","Well looks like team IntElligence whens the steak!","For todays lecture we will be listening to the musical stylings of Mac Sabbath","I dont always make a home brew but when I do I make Hopolopagus IPAs staty thirsy my class"};
+
 	
 	public TeacherTom() throws FileNotFoundException
 	{
@@ -25,6 +28,7 @@ public class TeacherTom extends Teacher
 		this.defence = .15;
 		this.weapon = new Weapon();
 		this.attack = 30;
+  //    this.quotes = {"Why is there a public variable in your Student Class!","Well looks like team IntElligence whens the steak!","For todays lecture we will be listening to the musical stylings of Mac Sabbath","I dont always make a home brew but when I do I make Hopolopagus IPAs staty thirsy my class"};
 	}
 	
 	public boolean performSpecial(Student s1)

@@ -2,11 +2,12 @@ package Final;
 
 
 
-public class Teacher extends A_Character {
+public class Teacher extends A_Character 
+{
 
 	private String name;
-	private int totalHP;
-	private int currentHP;
+	private double totalHP;
+	private double currentHP;
 	private double defence;
 	
 	private A_Costume costume;
@@ -75,37 +76,41 @@ public class Teacher extends A_Character {
 		
 	}
 
-	@Override
-	public int getCurrentHP() {
-		return this.currentHP;
-	}
-
-	@Override
-	public void setCurrentHP(int currentHP) {
-		this.currentHP= currentHP;
-		
-	}
-
-	@Override
-	public int getTotalHP() {
-		return this.totalHP;
-	}
-
-	@Override
-	public void setTotalHP(int totalHP) {
-		this.totalHP= totalHP;
-		
-	}
+	
+	
 
 	@Override
 	public String getName() {
-		// TODO Auto-generated method stub
+	
 		return this.name;
 	}
 
 	@Override
 	public void setName(String name) {
 		this.name = name;
+		
+	}
+
+	@Override
+	public double getCurrentHP() {
+		
+		return this.currentHP;
+	}
+
+	@Override
+	public void setCurrentHP(double currentHP) {
+		this.currentHP = currentHP;
+	}
+
+	@Override
+	public double getTotalHP() {
+		
+		return this.totalHP;
+	}
+
+	@Override
+	public void setTotalHP(double totalHP) {
+		this.totalHP = totalHP;
 		
 	}
 	
