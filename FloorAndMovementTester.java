@@ -17,19 +17,27 @@ public class FloorAndMovementTester {
 		System.out.println("fellow students and vaculty.  First, enter the name of your character:");
 		String name = kb.nextLine();
 		System.out.println();
+		
 		A_Costume costume = A_Costume.selectCostume();
 		Student player = new Student(name,costume,true);
 		Party party = new Party(player);
+		ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+		ArrayList<A_Item> items = new ArrayList<A_Item>();
+		System.out.println("You are " + name + " wearing a "+ costume.toString() + " costume.");
+		System.out.println("Your starting weapon is: " + player.getWeapon().toString());
+		System.out.println("The game will now begin");
+		boolean gameOver = false;
+		int level =1;
+		boolean nextFloor = false;
 		
 		
 		
 		
-		Student travis = new Student("Travis",new CostumeWizard(),true);
-		Student michael = new Student("Michael",new CostumePie(),true);
+		
 		boolean over = false;
 	    
 		
-	   Floor f1 = new Floor(new TeacherStu(),new TeacherPaul(),new Student(" ",new CostumeRobot(),false),new Student(" ",new CostumeCop(),false),new Student(" ",new CostumeSnake(),false));
+	   Floor f1 = new Floor(new TeacherBrian(),new TeacherChris(),new Student(" Elizabeth",new CostumeRobot(),false),new Student("Michael ",new CostumeCop(),false),new Student("Homero",new CostumeSnake(),false));
 	   System.out.println(" ____");
 	   for(int x =0;x<4;x++)
 	   {
@@ -64,22 +72,27 @@ public class FloorAndMovementTester {
 	   System.out.println(" ____");
 	   
 	   
-	   Student trav = new Student("Travis",new CostumePie(),true);
-	   System.out.println(trav.getWeapon().getName());
-	   Teacher stu = new TeacherStu();
-	   Teacher brian = new TeacherBrian();
-	   Teacher xu = new TeacherXu();
+	  
+	   
 	   int bosses =2;
 	   int row = 0;
 	   int col = 0;
 	   String input ="";
 	   Scanner kb2 = new Scanner(System.in);
-	   while(bosses!=0)
+	   
+	  
+	   while(!gameOver)
+	   {
+	   
+	   while(!nextFloor)
 	   {
 		   
 		   
 		   //System.out.println(" ____");
-		   System.out.println("w for up, a for left, s for down, d for right");
+		   System.out.print("w for up, a for left, s for down, d for right");
+		   if(bosses==0)
+			   System.out.print(" or press u to advance to the next level");
+		   System.out.println();
 		   input = kb2.nextLine();
 		   if(input.equals("w"))
 		   {
@@ -115,8 +128,81 @@ public class FloorAndMovementTester {
 				   
 			   }
 		   }
+		   if(input.equals("u") && bosses<1)
+		   {
+			   nextFloor = true;
+		   }
 		  // System.out.println("Row: " + row + " Col: " +col);
-		   System.out.println("This is a " + f1.getFloor()[row][col].getType() + " tile");
+		   System.out.println("You have stepped on a " + f1.getFloor()[row][col].getType() + " tile");
+		   if(f1.getFloor()[row][col].getVisibility()==false)
+		   {
+			   if(f1.getFloor()[row][col].getType().equals("teacher"))
+			   {
+				   //call boss battle and stuff
+				   if(bosses==1)
+				   {
+					   System.out.println("You have beaten all bosses on this floor, you now have to option to move up to the next level by pressing 'u' instead of a direction");
+				   }
+				   bosses--;
+				   
+			   }
+			   else if(f1.getFloor()[row][col].getType().equals("student"))
+			   {
+				   Battle battle = new Battle(party.getLeader(),f1.getEnemyTile(row, col).getStudent(), party);
+				   battle.beginBattle();
+				   Weapon w = new Weapon();
+				   System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
+				   System.out.println(w.toString());
+				   String choice = kb.nextLine();
+				   if(choice.equalsIgnoreCase("y"))
+				   {
+					   System.out.println("Where would you like to put the weapon?");
+					   System.out.println("1. Equip it to my character");
+					   System.out.println("2. Put it in my bag of weapons");
+					   String str = kb.nextLine();
+					   if(str.equalsIgnoreCase("1"))
+					   {
+						   party.getLeader().setWeapon(w);
+					   }
+					   else if(str.equalsIgnoreCase("2"))
+						   weapons.add(w);
+					   else
+						   weapons.add(w);
+				   }
+				   A_Item item = A_Item.getRandomItem();
+				   System.out.println("You have recieved a(n) " + item.getName()+ " which will affect your "+item.getAffects()+" and it has been put in your bag of items");
+				   items.add(item);
+			   }
+			   
+			   else if((f1.getFloor()[row][col].getType().equals("loot")))
+			   {
+				   Weapon w = new Weapon();
+				   System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
+				   System.out.println(w.toString());
+				   String choice = kb.nextLine();
+				   if(choice.equalsIgnoreCase("y"))
+				   {
+					   System.out.println("Where would you like to put the weapon?");
+					   System.out.println("1. Equip it to my character");
+					   System.out.println("2. Put it in my bag of weapons");
+					   String str = kb.nextLine();
+					   if(str.equalsIgnoreCase("1"))
+					   {
+						   party.getLeader().setWeapon(w);
+					   }
+					   else if(str.equalsIgnoreCase("2"))
+						   weapons.add(w);
+					   else
+						   weapons.add(w);
+				   }
+				   A_Item item = A_Item.getRandomItem();
+				   System.out.println("You have recieved a(n) " + item.getName()+" which will affect your "+item.getAffects()+ " and it has been put in your bag of items");
+				   items.add(item);
+			   }
+			   f1.getFloor()[row][col].setVisibility(true);
+		   }
+		   
+		  
 		   
 		   System.out.println(" ____");
 		   for(int x =0;x<4;x++)
@@ -146,12 +232,8 @@ public class FloorAndMovementTester {
 					  
 					   if(row == x && col ==y)
 					   {
-						   if(f1.getFloor()[x][y].getVisibility()==false)
-						   {
-							   Battle battle = new Battle(party.getLeader(),f1.getEnemyTile(row, col).getStudent(), party);
-							   battle.beginBattle();
-						   }
-						   f1.getFloor()[x][y].setVisibility(true);
+						  
+						   
 						   System.out.print("X");
 					   }
 					   
@@ -165,7 +247,7 @@ public class FloorAndMovementTester {
 				   {
 					   if(row == x && col ==y)
 					   {
-						   if(f1.getFloor()[x][y].getVisibility()==false)
+						   
 							   
 						   f1.getFloor()[x][y].setVisibility(true);
 						   System.out.print("X");
@@ -199,7 +281,34 @@ public class FloorAndMovementTester {
 			   
 		   }
 		   
-	   }//
+	   }//end one floor
+	   if(level ==1)
+	   {
+		   System.out.println("You have completed floor 1, and will now move on to level 2");
+		   f1 = new Floor(new TeacherTony(), new TeacherKosuke(), new Student("Alistar",new CostumeRobot(),false), new Student("Bryce", new CostumePie(), false), new Student("Tim",  new CostumeRobot(),false));
+	   }
+	   else if(level ==2)
+	   {
+		   System.out.println("You have completed floor 1, and will now move on to level 3");
+		   f1 = new Floor(new TeacherXu(), new TeacherPaul(), new Student("Sarah",new CostumeRobot(),false), new Student("Kyle", new CostumePie(), false), new Student("Alex",  new CostumeRobot(),false));
+	   }
+	   else if(level==3)
+	   {
+		   System.out.println("You have completed floor 1, and will now move on to level 4");
+		   f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student("Alistar",new CostumeRobot(),false), new Student("Bryce", new CostumePie(), false), new Student("Tim",  new CostumeRobot(),false));
+	   }
+	   else
+	   {
+		   //call final battle with the ladies
+	   }
+	   
+	   row =0;
+	   col =0;
+	   bosses =2;
+	   level++;
+	   nextFloor = false;
+	   
+	   }//end game
 	    
 		
 		

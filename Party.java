@@ -7,6 +7,8 @@ public class Party
 {
 	private ArrayList<Student> party = new ArrayList<Student>();
 	private Student leader;
+	private ArrayList<Weapon> weapons = new ArrayList<Weapon>();
+	private ArrayList<A_Item> items = new ArrayList<A_Item>();
 	public Party(Student player)
 	{
 		this.leader = player;
@@ -108,5 +110,21 @@ public class Party
 			return false;
 		}
 		return this.party.remove(characterIn);
+	}
+
+	public ArrayList<Weapon> getWeapons() {
+		return weapons;
+	}
+
+	public void setWeapons(ArrayList<Weapon> weapons) {
+		this.weapons = weapons;
+	}
+
+	public ArrayList<A_Item> getItems() {
+		return items;
+	}
+
+	public void setItems(ArrayList<A_Item> items) {
+		this.items = items;
 	}
 }

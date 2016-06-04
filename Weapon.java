@@ -32,6 +32,7 @@ public class Weapon extends A_Item
 			    {
 			         adjs.add(afin.nextLine());
 			    }
+			    double rare;
 			    
 			    int noun = nRand.nextInt(4308);
 		         if(noun<0)
@@ -43,13 +44,23 @@ public class Weapon extends A_Item
 		         int rarity = rRand.nextInt(100)+1;
 		         
 		         if(rarity>75 && rarity<90)
+		         {
+		        	 rare = 1.25;
 		            name =("The Epic "+adjs.get(adj)+ "-" + nouns.get(noun));
+		         }
 		         else if(rarity>90)
+		         {
 		            name =("The Legendary "+adjs.get(adj)+ "-" + nouns.get(noun));
+		            rare = 1.5;
+		         }
+		         
 		         else   
+		         {
 		            name =("The "+adjs.get(adj)+ "-" + nouns.get(noun));
+		            rare = 1.0;
+		         }
 		         this.name = name;
-		         this.attack =10;
+		         this.attack =20*rare;
 		         
 
 		}
@@ -65,6 +76,12 @@ public class Weapon extends A_Item
 
 		public void setAffects(String affects) {
 			this.affects = affects;
+		}
+		
+		public String toString()
+		{
+			
+			return this.getName() + " with " + this.getAttack()+ " attack";
 		}
 		
 		

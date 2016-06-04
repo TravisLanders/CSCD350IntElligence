@@ -51,8 +51,8 @@ public abstract class A_Costume
 		System.out.println("You will now choose a costume to wear for the length of the game. The Costume attributes will be displayed in the following manner:");
 		Thread.sleep(200);
 		System.out.println("CostumeName, Specialty, CostumePairing");
-		do
-		{
+		
+		
 			System.out.println("Select a costume from the following.");
 			Thread.sleep(200);
 			System.out.println("1. CostumeType: Coffee Cup, Specialty: Java, Pairing: Android");
@@ -79,9 +79,7 @@ public abstract class A_Costume
 			System.out.println("11. CostumeType: Wizard, Specialty: C, Pairing: OS");
 			Thread.sleep(200);
 			choice = kb.nextInt();
-			if(choice<1 || choice >11)
-				System.out.println("Invalid selection, please try again");
-		}while(choice >11 || choice <1);
+			
 		switch(choice)
 		{
 			case 1: return new CostumeCoffeeCup();
@@ -94,7 +92,8 @@ public abstract class A_Costume
 			case 8: return new CostumePie();
 			case 9: return new CostumeRobot();
 			case 10: return new CostumeSnake();
-			default: return new CostumeWizard();
+			case 11: return new CostumeWizard();
+			default: throw new Exception();
 		
 		}
 		}
