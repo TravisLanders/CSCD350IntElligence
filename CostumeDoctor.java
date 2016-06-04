@@ -15,4 +15,10 @@ public class CostumeDoctor extends A_Costume
 		NPC.setCurrentHP(NPC.getCurrentHP() + random.nextInt() + 10);
 	}
 	*/
+	@Override
+	public String toString()
+	{
+		
+		return "Doctor";
+	}
 }

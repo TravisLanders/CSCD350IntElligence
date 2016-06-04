@@ -6,5 +6,10 @@ public class CostumeSnake extends A_Costume
 	{
 		super(Specialty.PYTHON, Pair.CSHARP);
 	}
-
+	@Override
+	public String toString()
+	{
+		
+		return "Snake";
+	}
 }

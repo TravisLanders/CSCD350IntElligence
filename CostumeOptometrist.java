@@ -6,4 +6,10 @@ public class CostumeOptometrist extends A_Costume
 	{
 		super(Specialty.CSHARP, Pair.PYTHON);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "Optometrist";
+	}
 }

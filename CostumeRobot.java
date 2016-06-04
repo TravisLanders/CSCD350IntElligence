@@ -6,5 +6,11 @@ public class CostumeRobot extends A_Costume
 	{
 		super(Specialty.ANDROID, Pair.JAVA);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "Robot";
+	}
 
 }

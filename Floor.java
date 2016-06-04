@@ -17,7 +17,7 @@ public class Floor
 		{
 			this.level= this.getLevel() +1;
 			this.floor = new A_Tile[4][4];
-			this.rand = new Random(4);
+			this.rand = new Random();
 			int teachers = 2;
 			int students = 3;
 			int loot = 4;
@@ -31,7 +31,7 @@ public class Floor
 						int num = rand.nextInt(4);
 						if(x==0 && y==0)
 						{
-							floor[x][y] = new BlankTile("blank");
+							floor[x][y] = new BlankTile();
 						}
 						
 						if(num == 0 && teachers>0)
@@ -47,23 +47,23 @@ public class Floor
 						else if(num == 1 && students>0)
 						{
 							if(students ==3)
-								floor [x][y] = new EnemyTile("student",s1);
+								floor [x][y] = new EnemyTile(s1);
 							else if(students == 2)
-								floor [x][y] = new EnemyTile("student",s2);
+								floor [x][y] = new EnemyTile(s2);
 							else
-								floor [x][y] = new EnemyTile("student",s3);
+								floor [x][y] = new EnemyTile(s3);
 							students--;
 							placed = true;
 						}
 						else if(num ==2 && loot>0)
 						{
-							floor[x][y]= new LootTile("loot");
+							floor[x][y]= new LootTile();
 							loot--;
 							placed = true;
 						}
 						else
 						{
-							floor[x][y] = new BlankTile("blank");
+							floor[x][y] = new BlankTile();
 							placed = true;
 						}
 						
@@ -78,6 +78,21 @@ public class Floor
 
 		public int getLevel() {
 			return level;
+		}
+		public EnemyTile getEnemyTile(int row, int col)
+		{
+			return (EnemyTile) floor[row][col];
+		
+		}
+		
+		public BossTile getTeacherTile(int row, int col)
+		{
+			return (BossTile) floor[row][col];
+		}
+		
+		public LootTile getLootTile(int row, int col)
+		{
+			return (LootTile) floor[row][col];
 		}
 
 

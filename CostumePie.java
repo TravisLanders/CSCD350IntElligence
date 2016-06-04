@@ -6,5 +6,12 @@ public class CostumePie extends A_Costume
 	{
 		super(Specialty.MATH, Pair.DATAMINING);
 	}
+	
+	@Override
+	public String toString()
+	{
+		
+		return "Pie";
+	}
 
 }

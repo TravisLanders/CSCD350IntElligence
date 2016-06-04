@@ -9,12 +9,27 @@ public class FloorAndMovementTester {
 
 	public static void main(String[] args)throws Exception
 	{
-		Student travis = new Student("Travis",new CostumeWizard(),null,null,true);
-		Student michael = new Student("Michael",new CostumePie(),null,null,true);
+		
+		
+		
+		Scanner kb = new Scanner(System.in);
+		System.out.println("Welcome to Halloween Adventure in the CEB, where you will navigate through the different floors of the building in your halloween costume and battle ");
+		System.out.println("fellow students and vaculty.  First, enter the name of your character:");
+		String name = kb.nextLine();
+		System.out.println();
+		A_Costume costume = A_Costume.selectCostume();
+		Student player = new Student(name,costume,true);
+		Party party = new Party(player);
+		
+		
+		
+		
+		Student travis = new Student("Travis",new CostumeWizard(),true);
+		Student michael = new Student("Michael",new CostumePie(),true);
 		boolean over = false;
 	    
 		
-	   Floor f1 = new Floor(new TeacherStu(),new TeacherPaul(),new Student(null,null,null,null,false),new Student(null,null,null,null,false),new Student(null,null,null,null,false));
+	   Floor f1 = new Floor(new TeacherStu(),new TeacherPaul(),new Student(" ",new CostumeRobot(),false),new Student(" ",new CostumeCop(),false),new Student(" ",new CostumeSnake(),false));
 	   System.out.println(" ____");
 	   for(int x =0;x<4;x++)
 	   {
@@ -49,7 +64,7 @@ public class FloorAndMovementTester {
 	   System.out.println(" ____");
 	   
 	   
-	   Student trav = new Student("Travis",new CostumePie(),null,null,true);
+	   Student trav = new Student("Travis",new CostumePie(),true);
 	   System.out.println(trav.getWeapon().getName());
 	   Teacher stu = new TeacherStu();
 	   Teacher brian = new TeacherBrian();
@@ -58,14 +73,14 @@ public class FloorAndMovementTester {
 	   int row = 0;
 	   int col = 0;
 	   String input ="";
-	   Scanner kb = new Scanner(System.in);
+	   Scanner kb2 = new Scanner(System.in);
 	   while(bosses!=0)
 	   {
 		   
 		   
 		   //System.out.println(" ____");
 		   System.out.println("w for up, a for left, s for down, d for right");
-		   input = kb.nextLine();
+		   input = kb2.nextLine();
 		   if(input.equals("w"))
 		   {
 			   if(row-1>=0)
@@ -128,8 +143,14 @@ public class FloorAndMovementTester {
 				   else if(f1.getFloor()[x][y].getType().equals("student"))
 				   {
 					   
+					  
 					   if(row == x && col ==y)
 					   {
+						   if(f1.getFloor()[x][y].getVisibility()==false)
+						   {
+							   Battle battle = new Battle(party.getLeader(),f1.getEnemyTile(row, col).getStudent(), party);
+							   battle.beginBattle();
+						   }
 						   f1.getFloor()[x][y].setVisibility(true);
 						   System.out.print("X");
 					   }
@@ -144,8 +165,11 @@ public class FloorAndMovementTester {
 				   {
 					   if(row == x && col ==y)
 					   {
+						   if(f1.getFloor()[x][y].getVisibility()==false)
+							   
 						   f1.getFloor()[x][y].setVisibility(true);
 						   System.out.print("X");
+						   
 					   }
 					   else if(f1.getFloor()[x][y].getVisibility())
 						   System.out.print("L");
@@ -179,43 +203,16 @@ public class FloorAndMovementTester {
 	    
 		
 		
-//		while(!over)
-//		{
-//			System.out.println(travis.getName() + " is attacking "+michael.getName());
-//			double damage = travis.getAttack() -(travis.getAttack()*michael.getDefence());
-//			michael.setCurrentHP(michael.getCurrentHP()-damage);
-//				if(michael.getCurrentHP()<=0)
-//				{
-//					System.out.println(travis.getName( )+ " has defeated "+ michael.getName());
-//					return;
-//				}
-//				else
-//				{
-//					System.out.println(travis.getName() + " did " + damage + " damage to " + michael.getName() + " his health is now at" + michael.getCurrentHP());
-//				}
-//			
-//				System.out.println(michael.getName() + " is attacking "+travis.getName());
-//				double damage2 = michael.getAttack() -(michael.getAttack()*travis.getDefence());
-//				travis.setCurrentHP(travis.getCurrentHP()-damage2);
-//					if(travis.getCurrentHP()<=0)
-//					{
-//						System.out.println(michael.getName( )+ " has defeated "+ travis.getName());
-//						return;
-//					}
-//					else
-//					{
-//						System.out.println(michael.getName() + " did" + damage + " damage to " + travis.getName() + "his health is now at" + travis.getCurrentHP());
-//					}
-//			
-//			
-//			
-//		}
-		
-		
-		
-		
-		
 
-	}
+
+		
+		
+		
+		
+		
+	
+
+	
+}
 
 }

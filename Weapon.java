@@ -6,14 +6,17 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Weapon 
+public class Weapon extends A_Item
 {
 		private double attack;
 		private String name;
+		private String affects;
+		
 		
 		public Weapon() throws FileNotFoundException
 		{
-			 	ArrayList<String> nouns = new ArrayList<String>();
+			 	this.affects = "health";
+				ArrayList<String> nouns = new ArrayList<String>();
 			    ArrayList<String> adjs = new ArrayList<String>();
 			    Scanner nfin = new Scanner(new File("nouns.txt"));
 			    Scanner afin = new Scanner(new File("adj.txt"));
@@ -53,6 +56,16 @@ public class Weapon
 		
 		public String getName(){return this.name;}
 		public double getAttack(){return this.attack;}
+
+		@Override
+		public String getAffects() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public void setAffects(String affects) {
+			this.affects = affects;
+		}
 		
 		
 		
