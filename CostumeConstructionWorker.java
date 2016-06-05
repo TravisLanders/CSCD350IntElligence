@@ -6,4 +6,10 @@ public class CostumeConstructionWorker extends A_Costume
 	{
 		super(Specialty.ASSEMBLY, Pair.SECURITY);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "ConstructionWorker";
+	}
 }

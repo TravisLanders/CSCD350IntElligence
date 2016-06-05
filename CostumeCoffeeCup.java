@@ -6,4 +6,12 @@ public class CostumeCoffeeCup extends A_Costume
 	{
 		super(Specialty.JAVA, Pair.ANDROID);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "CoffeCup";
+	}
+	
+	
 }

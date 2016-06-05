@@ -6,6 +6,12 @@ public class CostumeFreshman extends A_Costume
 	{
 		super(Specialty.FRESHMAN, Pair.NONE);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "Freshman";
+	}
 
 	/*
 	 * Currently these values increase the Freshman's

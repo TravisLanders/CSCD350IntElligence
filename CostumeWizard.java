@@ -6,4 +6,10 @@ public class CostumeWizard extends A_Costume
 	{
 		super(Specialty.C, Pair.OS);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "Wizard";
+	}
 }

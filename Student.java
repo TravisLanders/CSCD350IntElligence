@@ -13,15 +13,16 @@ public class Student extends A_Character {
 	private Weapon weapon;
 	private boolean goodStudent;
 	private double attack;
+	private boolean isTheLeader;
 	
-	public Student(String name, A_Costume costume, SpecialAttack sa,Weapon weapon, boolean goodStudent) throws FileNotFoundException
+	public Student(String name, A_Costume costume, boolean goodStudent) throws FileNotFoundException
 	{
 		this.name = name;
 		this.totalHP = 100;
 		this.currentHP = 100;
 		this.defence = .05;
 		this.costume=costume;
-		this.sa = sa;
+		
 		this.weapon = new Weapon();
 		this.goodStudent = goodStudent;
 		this.attack = 15;
@@ -108,6 +109,16 @@ public class Student extends A_Character {
 	}
 	public void setGoodStudent(boolean goodStudent) {
 		this.goodStudent = goodStudent;
+	}
+	
+	public void setLeader()
+	{
+		this.isTheLeader = true;
+	}
+	
+	public boolean isLeader()
+	{
+		return this.isTheLeader;
 	}
 
 }

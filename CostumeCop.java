@@ -6,4 +6,10 @@ public class CostumeCop extends A_Costume
 	{
 		super(Specialty.SECURITY, Pair.ASSEMBLY);
 	}
+	@Override
+	public String toString()
+	{
+		
+		return "Cop";
+	}
 }

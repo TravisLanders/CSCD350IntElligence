@@ -41,6 +41,10 @@ public class EnemyTile extends A_Tile
 	public void setType(String type) {
 		this.type = type;
 	}
+	public Student getStudent()
+	{
+		return this.stu;
+	}
 
 	
     

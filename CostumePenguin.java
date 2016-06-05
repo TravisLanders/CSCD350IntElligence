@@ -6,5 +6,10 @@ public class CostumePenguin extends A_Costume
 	{
 		super(Specialty.OS, Pair.C);
 	}
-
+	@Override
+	public String toString()
+	{
+		
+		return "Penguin";
+	}
 }
