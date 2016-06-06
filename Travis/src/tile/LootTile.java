@@ -17,7 +17,7 @@ public class LootTile extends A_Tile
 {
 	//A_Item loot;
 	private Weapon weapon;
-	private A_Item item;
+	private Potion item;
 	private boolean visibility;
 	private String type;
 	
@@ -26,7 +26,33 @@ public class LootTile extends A_Tile
 		this.type = "loot";
 		this.visibility=false;
 		this.weapon = new Weapon();
+		this.item = getRandomPotion();
+		
 		//need to create a method that returns a random item
+	}
+	
+	public  Potion getRandomPotion()
+	{
+		Random rand = new Random();
+		int num = rand.nextInt(2);
+		
+		
+	    if(num ==0)
+		{
+			this.item = new PotionBeer();
+		}
+		
+		else if(num ==1)
+		{
+			this.item = new PotionMountainDew();
+		}
+		
+		else if(num ==3)
+		{
+			this.item =new PotionTopRamen();
+		}
+		return new PotionMountainDew();
+		
 	}
 	
 	public  void lootAction(Backpack backpack) throws FileNotFoundException
@@ -43,11 +69,11 @@ public class LootTile extends A_Tile
 		this.weapon = weapon;
 	}
 
-	public A_Item getItem() {
+	public Potion getItem() {
 		return item;
 	}
 
-	public void setItem(A_Item item) {
+	public void setItem(Potion item) {
 		this.item = item;
 	}
 	

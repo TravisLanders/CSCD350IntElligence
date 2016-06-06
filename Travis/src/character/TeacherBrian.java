@@ -34,8 +34,8 @@ public class TeacherBrian extends Teacher
 		this.quotes = new String[4];
 		this.quotes[0] = "Yes we use 0 based indexing in CS -_- \"shakes head\"";
 		this.quotes[1] = "Why do I have to deal with the nubes that should be Stu's job";
-		this.quotes[2] = "";
-		this.quotes[3] = "";
+		this.quotes[2] = "This should be blowing your mind!";
+		this.quotes[3] = "I love wings";
 	}
 	
 	public String getName(){return this.name;}

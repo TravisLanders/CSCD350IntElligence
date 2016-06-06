@@ -14,9 +14,11 @@ public class PotionBeer extends Potion
 		this.amount=.50;
 	}
 	
-	public void usePotion(Student s1)
+	public Student usePotion(Student s1)
 	{
 		s1.setDefence(s1.getDefence()+this.amount);
+		System.out.println("Used Beer");
+		return s1;
 	}
 
 	public double getAmount() 

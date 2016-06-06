@@ -15,9 +15,11 @@ public class PotionTopRamen extends Potion
 	}
 	
 	@Override
-	public void usePotion(Student s1)
+	public Student usePotion(Student s1)
 	{
 		s1.setCurrentHP(s1.getCurrentHP()+this.amount);
+		System.out.println("Used Top Ramen");
+		return s1;
 	}
 
 	public double getAmount() 

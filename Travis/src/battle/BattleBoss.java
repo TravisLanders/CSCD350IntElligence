@@ -127,11 +127,11 @@ public class BattleBoss extends A_Battle
 		
 		else
 		{
-			if(seed == 3)
-			{
+			//if(seed == 3)
+			
 				String theTaunt = ((Teacher) this.opponent).taunt();
 				System.out.println(this.opponent.getName() + ": " + theTaunt);
-			}
+			
 			int damageDone = random.nextInt((int) this.opponent.getAttack());
 			this.champion.setCurrentHP(this.champion.getCurrentHP() - damageDone);
 			System.out.println("You have been dealt " + damageDone + " damage by " + this.opponent.getName());

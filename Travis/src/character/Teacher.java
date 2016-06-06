@@ -37,6 +37,8 @@ public class Teacher extends A_Character
 		
 	}
 	
+	
+	
 	public boolean performSpecial(Student s1)
 	{
 		return true;
@@ -132,8 +134,8 @@ public class Teacher extends A_Character
 	
 	public String taunt()
 	{
-		Random random = new Random(3);
-		int seed = random.nextInt();
+		Random random = new Random();
+		int seed = random.nextInt(3);
 		return quotes[seed];
 	}
 

@@ -28,6 +28,7 @@ public class Potion extends A_Item
 
 	public Student usePotion(Student s1)
 	{
+		System.out.println("Calling Potion use");
 		return s1;
 	}
 	

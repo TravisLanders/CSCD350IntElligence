@@ -2,7 +2,7 @@ package character;
 
 import costume.*;
 
-public class Ape extends A_Character
+public class Ape extends Teacher
 {
 	public Ape()
 	{

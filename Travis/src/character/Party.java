@@ -8,11 +8,12 @@ public class Party
 {
 	private ArrayList<Student> party = new ArrayList<Student>();
 	private Student leader;
-	Backpack backpack = new Backpack();
-	
+	Backpack backpack;
+
 	public Party(Student player)
 	{
 		this.leader = player;
+		backpack = new Backpack();
 		party.add(this.leader);
 	}
 	

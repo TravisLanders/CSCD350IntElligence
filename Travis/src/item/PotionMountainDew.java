@@ -10,13 +10,16 @@ public class PotionMountainDew extends Potion
 	
 	public PotionMountainDew()
 	{
-		super("Moutnain Dew", "Attack");
+		super("Mountain Dew", "Attack");
 		this.amount=50;
 	}
 	
-	public void usePotion(Student s1)
+	@Override
+	public Student usePotion(Student s1)
 	{
 		s1.setAttack(s1.getAttack()+this.amount);
+		System.out.println("Used Mountain Dew");
+		return s1;
 	}
 
 	public double getAmount() 

@@ -42,8 +42,8 @@ public abstract class A_Tile
 	public Potion randomPotion()
 	{
 		Random random = new Random();
-		random.setSeed(4);
-		int seed = random.nextInt(4);
+		random.setSeed(3);
+		int seed = random.nextInt(3);
 		if(seed == 1)
 		{
 			return new PotionMountainDew();

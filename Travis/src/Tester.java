@@ -135,8 +135,9 @@ public class Tester
 						
 						BattleBoss battle = new BattleBoss(party.getLeader(), f1.getTeacherTile(row, col).getTeacher(), party);
 						battle.beginBattle();
-						Weapon w = new Weapon();
+						/*Weapon w = new Weapon();
 						System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
+						//System.out.println(w.toString());
 						System.out.println(w.toString());
 						String choice = kb.nextLine();
 						if (choice.equalsIgnoreCase("y"))
@@ -153,12 +154,18 @@ public class Tester
 							else
 								party.getBackpack().addWeapon(w);
 						}
-						Potion item = Potion.getRandomPotion();
+						;
 						System.out.println("You have recieved a(n) " + item.getName() + " which will boost your "
 								+ item.getEffects() + " and it has been put in your bag of items");
 						party.getBackpack().addPotion(item);
+						*/
 						if (bosses == 1)
 						{
+							if(level ==4)
+							{
+								System.out.println("You have traversed all floors and have won the game!");
+								System.exit(-1);
+							}
 							System.out.println(
 									"You have beaten all bosses on this floor, you now have to option to move up to the next level by pressing 'u' instead of a direction");
 						}
@@ -168,9 +175,10 @@ public class Tester
 					{
 						BattleStudent battle = new BattleStudent(party.getLeader(), f1.getEnemyTile(row, col).getStudent(), party);
 						battle.beginBattle();
-						Weapon w = new Weapon();
+						//Weapon w = new Weapon();
+						/*System.out.println(f1.getLootTile(row, col).getWeapon().toString());
 						System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
-						System.out.println(w.toString());
+						//System.out.println(w.toString());
 						String choice = kb.nextLine();
 						if (choice.equalsIgnoreCase("y"))
 						{
@@ -180,23 +188,24 @@ public class Tester
 							String str = kb.nextLine();
 							if (str.equalsIgnoreCase("1"))
 							{
-								party.getLeader().setWeapon(w);
+								party.getLeader().setWeapon(f1.getLootTile(row, col).getWeapon());
 							} else if (str.equalsIgnoreCase("2"))
-								party.getBackpack().addWeapon(w);
+								party.getBackpack().addWeapon(f1.getLootTile(row, col).getWeapon());
 							else
-								party.getBackpack().addWeapon(w);
+								party.getBackpack().addWeapon(f1.getLootTile(row, col).getWeapon());
 						}
-						Potion item = Potion.getRandomPotion();
+						Potion item = f1.getLootTile(row, col).getItem();
 						System.out.println("You have recieved a(n) " + item.getName() + " which will boost your "
 								+ item.getEffects() + " and it has been put in your bag of items");
-						party.getBackpack().addPotion(item);
+						*///party.getBackpack().addPotion(item);
 					}
+					
 
 					else if ((f1.getFloor()[row][col].getType().equals("loot")))
 					{
-						Weapon w = new Weapon();
+						//Weapon w = new Weapon();
 						System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
-						System.out.println(w.toString());
+						System.out.println(f1.getLootTile(row, col).getWeapon().toString());
 						String choice = kb.nextLine();
 						if (choice.equalsIgnoreCase("y"))
 						{
@@ -206,16 +215,16 @@ public class Tester
 							String str = kb.nextLine();
 							if (str.equalsIgnoreCase("1"))
 							{
-								party.getLeader().setWeapon(w);
+								party.getLeader().setWeapon(f1.getLootTile(row, col).getWeapon());
 							} else if (str.equalsIgnoreCase("2"))
-								party.getBackpack().addWeapon(w);
+								party.getBackpack().addWeapon(f1.getLootTile(row, col).getWeapon());
 							else
-								party.getBackpack().addWeapon(w);
+								party.getBackpack().addWeapon(f1.getLootTile(row, col).getWeapon());
 						}
-						Potion item = Potion.getRandomPotion();
-						System.out.println("You have recieved a(n) " + item.getName() + " which will boost your "
-								+ item.getEffects() + " and it has been put in your bag of items");
-						party.getBackpack().addPotion(item);
+						//Potion item = f1.getLootTile(row, col).getItem();
+						System.out.println("You have recieved a(n) " + f1.getLootTile(row, col).getItem().getName() + " which will boost your "
+								+ f1.getLootTile(row, col).getItem().getEffects() + " and it has been put in your bag of items");
+						party.getBackpack().addPotion(f1.getLootTile(row, col).getItem());
 					}
 					f1.getFloor()[row][col].setVisibility(true);
 				}
@@ -290,23 +299,27 @@ public class Tester
 			} // end one floor
 			if (level == 1)
 			{
+				//System.out.println("Congrats on finishing the first floor, here is a surpise APE battle to see if you're competent.");
+				//int tries = 3;
+				//BattleBoss ape = new BattleBoss(party.getLeader(),new Ape(), party);
 				System.out.println("You have completed floor 1, and will now move on to level 2");
 				f1 = new Floor(new TeacherTony(), new TeacherKosuke(),
 						new Student("Alistar", new CostumeRobot(), false),
 						new Student("Bryce", new CostumePie(), false), new Student("Tim", new CostumeRobot(), false));
 			} else if (level == 2)
 			{
-				System.out.println("You have completed floor 1, and will now move on to level 3");
+				System.out.println("You have completed floor 2, and will now move on to level 3");
 				f1 = new Floor(new TeacherBojian(), new TeacherPaul(), new Student("Sarah", new CostumeRobot(), false),
 						new Student("Kyle", new CostumePie(), false), new Student("Alex", new CostumeRobot(), false));
 			} else if (level == 3)
 			{
-				System.out.println("You have completed floor 1, and will now move on to level 4");
+				System.out.println("You have completed floor 3, and will now move on to level 4");
 				f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student("Alistar", new CostumeRobot(), false),
 						new Student("Bryce", new CostumePie(), false), new Student("Tim", new CostumeRobot(), false));
 			} else
 			{
 				// call final battle with the ladies
+				System.out.println("You have traversed all floors and have won the game!");
 			}
 
 			row = 0;
@@ -320,11 +333,4 @@ public class Tester
 	}
 
 }
-public class Tester {
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-
-}

@@ -11,6 +11,9 @@ public class BossTile extends A_Tile
 	private Teacher teach;
 	private boolean visibility;
 	private String type;
+	private Potion item;
+	
+	
 	public BossTile(String input,Teacher teach) 
 	{
 		
