@@ -137,7 +137,7 @@ public class Backpack
 					weapons.add(temp);
 				}
 				
-				target.equipWeapon(weapon);
+				target.setWeapon(weapon);
 				party.addMember(target);
 				return party;
 			}

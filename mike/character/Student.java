@@ -35,18 +35,13 @@ public class Student extends A_Character
 		this.currentHP = level * this.currentHP;
 	}
 
-	// public Weapon getWeapon() {return this.getWeapon();}
-	/*
-	 * public void setWeapon(Weapon weapon) { this.weapon = weapon;
-	 * 
-	 * }
-	 * 
-	 * 
-	 * public SpecialAttack getSA(){return this.sa;} public void
-	 * setSA(SpecialAttack sa) { this.sa = sa;
-	 * 
-	 * }
-	 */
+	  
+//	  
+//	 public SpecialAttack getSA(){return this.sa;} public void
+//	 setSA(SpecialAttack sa) { this.sa = sa;
+//	  
+//	 }
+	 
 
 	public boolean isGoodStudent()
 	{
@@ -68,7 +63,7 @@ public class Student extends A_Character
 		return this.isTheLeader;
 	}
 
-	public void equipWeapon(Weapon weaponIn)
+	public void setWeapon(Weapon weaponIn)
 	{
 		this.weapon = weaponIn;
 		this.attack = this.attack * this.weapon.getAttack();

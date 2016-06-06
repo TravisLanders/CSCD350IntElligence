@@ -40,10 +40,5 @@ public class BossTile extends A_Tile
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
-	   
-		
-		
 		
 }
