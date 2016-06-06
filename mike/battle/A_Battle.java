@@ -110,6 +110,32 @@ public abstract class A_Battle
 		}
 	}
 	
+	protected void useItem()
+	{
+		System.out.println("Press 'W' to equip a weapon. Press 'I' to use an item. Press 'C' to cancel request.");
+		Scanner kin = new Scanner(System.in);
+		String input = kin.nextLine();
+		if(input.equalsIgnoreCase("W"))
+		{
+			String name = this.champion.getName();
+			this.party = this.party.getBackpack().equipWeapon(this.party);
+			this.champion = this.party.getStudent(name);
+		}
+		
+		else if(input.equalsIgnoreCase("I"))
+		{
+			String name = this.champion.getName();
+			this.party = this.party.getBackpack().usePotion(this.party);
+			this.champion = this.party.getStudent(name);
+		}
+		
+		else
+		{
+			// do nothing
+		}
+		
+	}
+	
 	protected abstract void onVictory();
 	
 	protected abstract void championAttack();

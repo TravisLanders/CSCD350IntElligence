@@ -24,6 +24,7 @@ public class Student extends A_Character
 		super(name, 100.0, 100.0, 0.50, costume, 15.0, false);
 		this.goodStudent = goodStudent;
 		this.isTheLeader = false;
+		this.weapon = null;
 	}
 	
 	public void levelMultiplier(int level)
@@ -76,5 +77,12 @@ public class Student extends A_Character
 	public Weapon getWeapon()
 	{
 		return this.weapon;
+	}
+	
+	public Weapon disarm()
+	{
+		Weapon toGo = this.weapon;
+		this.weapon = null;
+		return toGo;
 	}
 }

@@ -65,7 +65,7 @@ public class BattleStudent extends A_Battle
 			break;
 
 		case "i":
-			// use item
+			useItem();
 			break;
 
 		case "a":

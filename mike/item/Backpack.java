@@ -126,9 +126,17 @@ public class Backpack
 			else if(input != weapons.size() + 1) // equip
 			{
 				Weapon weapon = weapons.get(input - 1);
+				weapons.remove(weapon);			
 				System.out.println("Who would you like to equip the weapon to?");
 				Student target = party.swap();
 				party.removeMember(target);
+				
+				Weapon temp = target.disarm();
+				if(temp != null)
+				{
+					weapons.add(temp);
+				}
+				
 				target.equipWeapon(weapon);
 				party.addMember(target);
 				return party;

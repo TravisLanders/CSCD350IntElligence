@@ -2,11 +2,14 @@ package character;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import item.*;
 
 public class Party
 {
 	private ArrayList<Student> party = new ArrayList<Student>();
 	private Student leader;
+	Backpack backpack = new Backpack();
+	
 	public Party(Student player)
 	{
 		this.leader = player;
@@ -102,5 +105,22 @@ public class Party
 			return false;
 		}
 		return this.party.remove(characterIn);
+	}
+	
+	public Backpack getBackpack()
+	{
+		return this.backpack;
+	}
+	
+	public Student getStudent(String name)
+	{
+		for(Student student : party)
+		{
+			if(student.getName().equals(name))
+			{
+				return student;
+			}
+		}
+		return party.get(0);
 	}
 }
