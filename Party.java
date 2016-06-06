@@ -44,17 +44,21 @@ public class Party
 		{
 			System.out.println("Press " + (i + 1) + " to enter " + party.get(i).getName() + " into battle");
 		}
+		boolean swapped = false;
+		
 		
 		try
 		{
 			int num = scanner.nextInt();
+			scanner.nextLine();
 			System.out.println(num);
-			if(num > party.size() || num < 1)
+			while(num > party.size() || num < 1)
 			{
 				System.out.println("Invalid input. Try again");
-				num = -1;
+				num = scanner.nextInt();
+				scanner.nextLine();
 				//scanner.close();
-				return swap();
+				//return swap();
 			}
 			//scanner.close();
 			return party.get(num - 1);
@@ -62,12 +66,24 @@ public class Party
 		
 		catch(Exception e)
 		{
-			System.out.println(e);
-			System.out.println("Invalid input. Try again");
-			scanner.close();
-			//return swap();
-			return swap();
-		}		
+//			System.out.println(e);
+			//System.out.println("Invalid input. Try again");
+//			scanner.close();
+//			//return swap();
+//			return swap();
+			
+			Student stu = null;
+			int stucount=0;
+			do
+			{
+				stu = party.get(stucount);
+			}while(stu.getCurrentHP()<=0);
+			System.out.println("You suck, so " + party.get(stucount).getName() +" has been selected");
+			return stu;
+			
+		}	
+		
+		
 	}
 	
 	protected Student swapStudent(String str)

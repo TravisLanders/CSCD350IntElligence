@@ -4,7 +4,7 @@ public class CostumeFreshman extends A_Costume
 {
 	public CostumeFreshman()
 	{
-		super(Specialty.FRESHMAN, Pair.NONE);
+		super(Specialty.NONE, Pair.NONE);
 	}
 	@Override
 	public String toString()

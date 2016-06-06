@@ -1,6 +1,6 @@
 package Final;
 
-public class PotionTopRamen extends Potions
+public class PotionTopRamen extends Potion
 {
 	private String name;
 	private String affects;
@@ -8,29 +8,14 @@ public class PotionTopRamen extends Potions
 	
 	public PotionTopRamen()
 	{
-		this.name ="Top Ramen";
-		this.affects= "Health";
-		this.amount=.50;
+		super("Top Ramen", "Adds 10 hp");
+		this.amount = 10;
 	}
 	
+	@Override
 	public void usePotion(Student s1)
 	{
 		s1.setCurrentHP(s1.getCurrentHP()+this.amount);
-	}
-	
-	
-	
-	@Override
-	public String getName() 
-	{
-		return this.name;
-	}
-
-	@Override
-	public String getAffects() 
-	{
-
-		return this.affects;
 	}
 
 	public double getAmount() 

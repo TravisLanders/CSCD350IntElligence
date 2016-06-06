@@ -16,12 +16,12 @@ public class EnemyTile extends A_Tile
 		this.visibility = false;
 	}
 	
-	public void initiateBattle(ArrayList<A_Item> inventory) throws FileNotFoundException 
+	public void initiateBattle(Backpack bp) throws FileNotFoundException 
 	{
 		// call student battle method with this student and our student
 		this.visibility = true;
-		inventory.add(new Weapon());
-		inventory.add(A_Item.getRandomItem());
+		bp.addWeapon(new Weapon());
+		bp.addPotion(Potion.getRandomItem());
 		
 	}
 
