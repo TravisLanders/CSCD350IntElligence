@@ -1,6 +1,7 @@
 package character;
 
 import costume.*;
+import item.Weapon;
 
 public class Student extends A_Character
 {
@@ -11,20 +12,26 @@ public class Student extends A_Character
 	private double defence;
 	private A_Costume costume;
 	// private SpecialAttack sa;
-	// private Weapon weapon;
+	private Weapon weapon;
 	private boolean goodStudent;
 	private double attack;
 	private boolean isTheLeader;
 
 	public Student(String name, A_Costume costume, boolean goodStudent)// SpecialAttack
 																		// sa,Weapon
-																		// weapon,
-																		// boolean
-																		// goodStudent)
+																		// weapon)
 	{
-		super(name, 100.0, 100.0, 0.50, costume, 15.0);
+		super(name, 100.0, 100.0, 0.50, costume, 15.0, false);
 		this.goodStudent = goodStudent;
 		this.isTheLeader = false;
+	}
+	
+	public void levelMultiplier(int level)
+	{
+		this.attack = level * this.attack;
+		this.defence = level * this.defence;
+		this.totalHP = level * this.totalHP;
+		this.currentHP = level * this.currentHP;
 	}
 
 	// public Weapon getWeapon() {return this.getWeapon();}
@@ -60,4 +67,14 @@ public class Student extends A_Character
 		return this.isTheLeader;
 	}
 
+	public void equipWeapon(Weapon weaponIn)
+	{
+		this.weapon = weaponIn;
+		this.attack = this.attack * this.weapon.getAttack();
+	}
+	
+	public Weapon getWeapon()
+	{
+		return this.weapon;
+	}
 }

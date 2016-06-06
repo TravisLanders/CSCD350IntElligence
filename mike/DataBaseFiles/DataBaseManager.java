@@ -2,7 +2,7 @@ package DataBaseFiles;
 
 import java.sql.*;
 import java.io.*;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class DataBaseManager
@@ -179,6 +179,20 @@ public class DataBaseManager
 
     }
 
+    public ArrayList<String> addStudent(ArrayList<String> namesList)
+    {
+		Random random = new Random();
+		int index = random.nextInt(25);
+		String name = getName(index);
+		
+		while(namesList.contains(name))
+		{
+			index = random.nextInt(25);
+			name = getName(index);
+		}
+		namesList.add(name);
+		return namesList;
+    }
 } 
 
 

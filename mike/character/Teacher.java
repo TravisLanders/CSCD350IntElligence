@@ -1,5 +1,7 @@
 package character;
 
+import java.util.Random;
+
 import costume.*;
 
 
@@ -15,11 +17,12 @@ public class Teacher extends A_Character
 	//private SpecialAttack sa;
 	//private Weapon weapon;
 	private double attack;
-	
+	protected String[] quotes; 
+
 	
 	public Teacher(String name, A_Costume costume)//, SpecialAttack sa,Weapon weapon)
 	{
-		super(name, 100, 100, 15, costume, 15);
+		super(name, 100, 100, 15, costume, 15, true);
 //		this.name = name;
 //		this.totalHP = 100;
 //		this.currentHP = 100;
@@ -29,6 +32,16 @@ public class Teacher extends A_Character
 //		this.sa = sa;
 //		this.weapon = weapon;
 		
+	}
+	
+	public boolean performSpecial(Student s1)
+	{
+		return true;
+	}
+	
+	public boolean specialAgainst()
+	{
+		return true;
 	}
 	
 	public double getAttack(){return this.attack;}
@@ -100,18 +113,25 @@ public class Teacher extends A_Character
 //		this.totalHP= totalHP;
 //		
 //	}
-
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
-		
-	}
+//
+//	@Override
+//	public String getName() {
+//		// TODO Auto-generated method stub
+//		return this.name;
+//	}
+//
+//	@Override
+//	public void setName(String name) {
+//		this.name = name;
+//		
+//	}
+//	
 	
+	public String taunt()
+	{
+		Random random = new Random(3);
+		int seed = random.nextInt();
+		return quotes[seed];
+	}
 
 }

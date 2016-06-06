@@ -12,8 +12,9 @@ public abstract class A_Character
 	//private SpecialAttack sa;
 	//private Weapon weapon;
 	private double attack;
+	private boolean isBoss;
 	
-	public A_Character(String nameIn, double totalHPIn, double currentHPIn, double defenceIn, A_Costume costumeIn, double attackIn)
+	public A_Character(String nameIn, double totalHPIn, double currentHPIn, double defenceIn, A_Costume costumeIn, double attackIn, boolean isBossIn)
 	{
 		this.name = nameIn;
 		this.totalHP = totalHPIn;
@@ -21,6 +22,7 @@ public abstract class A_Character
 		this.defence = defenceIn;
 		this.costume = costumeIn;
 		this.attack = attackIn;
+		this.isBoss = isBossIn;
 	}
 	
 	public double getAttack()
@@ -49,9 +51,7 @@ public abstract class A_Character
 	{
 		this.costume = costumeIn;
 	}
-	
-	
-	
+		
 	public double getDefence()
 	{
 		return this.defence;
@@ -92,4 +92,8 @@ public abstract class A_Character
 		this.name = nameIn;
 	}
 	
+	public boolean getIsBoss()
+	{
+		return this.isBoss;
+	}
 }

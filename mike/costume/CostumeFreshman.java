@@ -4,7 +4,7 @@ public class CostumeFreshman extends A_Costume
 {
 	public CostumeFreshman()
 	{
-		super(Specialty.FRESHMAN, Specialty.NONE);
+		super(Specialty.NONE, Specialty.NONE);
 	}
 	
 	@Override
