@@ -3,6 +3,8 @@ package tile;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import item.*;
+import character.*;
 
 public class BossTile extends A_Tile
 {
@@ -17,13 +19,13 @@ public class BossTile extends A_Tile
 		this.visibility = false;
 		
 	}
-	public void initiateBattle(ArrayList<A_Item> inventory) throws FileNotFoundException
+	public void initiateBattle(Backpack backpack) throws FileNotFoundException
 	{
 		
 		//call mikes boss battle class with student, teacher and party
 		this.setVisibility(true);
-		inventory.add(new Weapon());
-		inventory.add(A_Item.getRandomItem());
+		backpack.addWeapon(new Weapon());
+		backpack.addPotion(randomPotion());
 		
 	}
 	public boolean isVisibility() {

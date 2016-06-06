@@ -29,16 +29,11 @@ public class LootTile extends A_Tile
 		//need to create a method that returns a random item
 	}
 	
-	public  void lootAction(Backpack backpack)
+	public  void lootAction(Backpack backpack) throws FileNotFoundException
 	{
 		backpack.addWeapon(new Weapon());
-		backpack.addPotion(Potion.getRandomItem());		
+		backpack.addPotion(randomPotion());	
 	}
-	
-	
-	
-	
-	
 
 	public Weapon getWeapon() {
 		return weapon;
@@ -61,29 +56,11 @@ public class LootTile extends A_Tile
 		return "loot";
 	}
 
-
-
-
-
-
 	public boolean isVisibility() {
 		return visibility;
 	}
 
-
-
-
-
-
 	public void setVisibility(boolean visibility) {
 		this.visibility = visibility;
 	}
-
-
-
-	
-  
-	
-	
-	
 }

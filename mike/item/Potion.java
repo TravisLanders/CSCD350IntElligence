@@ -26,6 +26,5 @@ public class Potion extends A_Item
 	public void usePotion(Student s1)
 	{
 		// TODO Auto-generated method stub
-		
 	}
 }

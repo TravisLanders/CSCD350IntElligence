@@ -3,6 +3,7 @@ package tile;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import character.*;
+import item.*;
 
 public class EnemyTile extends A_Tile
 {
@@ -17,12 +18,12 @@ public class EnemyTile extends A_Tile
 		this.visibility = false;
 	}
 	
-	public void initiateBattle(ArrayList<A_Item> inventory) throws FileNotFoundException 
+	public void initiateBattle(Backpack backpack) throws FileNotFoundException 
 	{
 		// call student battle method with this student and our student
 		this.visibility = true;
-		inventory.add(new Weapon());
-		inventory.add(A_Item.getRandomItem());
+		backpack.addWeapon(new Weapon());
+		backpack.addPotion(randomPotion());
 		
 	}
 
