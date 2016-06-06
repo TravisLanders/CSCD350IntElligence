@@ -19,6 +19,7 @@ public class FloorAndMovementTester {
 		System.out.println();
 		
 		A_Costume costume = A_Costume.selectCostume();
+		Backpack bp = new Backpack();
 		Student player = new Student(name,costume,true);
 		Party party = new Party(player);
 		ArrayList<Weapon> weapons = new ArrayList<Weapon>();
@@ -29,6 +30,8 @@ public class FloorAndMovementTester {
 		boolean gameOver = false;
 		int level =1;
 		boolean nextFloor = false;
+		//DataBaseManager dm = new DataBaseManager();
+		Random rand = new Random();
 		
 		
 		
@@ -37,7 +40,7 @@ public class FloorAndMovementTester {
 		boolean over = false;
 	    
 		
-	   Floor f1 = new Floor(new TeacherBrian(),new TeacherChris(),new Student(" Elizabeth",new CostumeRobot(),false),new Student("Michael ",new CostumeCop(),false),new Student("Homero",new CostumeSnake(),false));
+	   Floor f1 = new Floor(new TeacherBrian(),new TeacherChris(),new Student("Homero",new CostumeRobot(),false),new Student("Bryce",new CostumeCop(),false),new Student("Bruce",new CostumeSnake(),false));
 	   System.out.println(" ____");
 	   for(int x =0;x<4;x++)
 	   {
@@ -148,7 +151,7 @@ public class FloorAndMovementTester {
 			   }
 			   else if(f1.getFloor()[row][col].getType().equals("student"))
 			   {
-				   Battle battle = new Battle(party.getLeader(),f1.getEnemyTile(row, col).getStudent(), party);
+				   BattleStudent battle = new BattleStudent(party.getLeader(),f1.getEnemyTile(row, col).getStudent(), party);
 				   battle.beginBattle();
 				   Weapon w = new Weapon();
 				   System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
@@ -170,7 +173,7 @@ public class FloorAndMovementTester {
 						   weapons.add(w);
 				   }
 				   A_Item item = A_Item.getRandomItem();
-				   System.out.println("You have recieved a(n) " + item.getName()+ " which will affect your "+item.getAffects()+" and it has been put in your bag of items");
+				   System.out.println("You have recieved a(n) " + item.getName()+ " which will affect your "+item.getEffects()+" and it has been put in your bag of items");
 				   items.add(item);
 			   }
 			   
@@ -196,7 +199,7 @@ public class FloorAndMovementTester {
 						   weapons.add(w);
 				   }
 				   A_Item item = A_Item.getRandomItem();
-				   System.out.println("You have recieved a(n) " + item.getName()+" which will affect your "+item.getAffects()+ " and it has been put in your bag of items");
+				   System.out.println("You have recieved a(n) " + item.getName()+" which will affect your "+item.getEffects()+ " and it has been put in your bag of items");
 				   items.add(item);
 			   }
 			   f1.getFloor()[row][col].setVisibility(true);
@@ -285,17 +288,17 @@ public class FloorAndMovementTester {
 	   if(level ==1)
 	   {
 		   System.out.println("You have completed floor 1, and will now move on to level 2");
-		   f1 = new Floor(new TeacherTony(), new TeacherKosuke(), new Student("Alistar",new CostumeRobot(),false), new Student("Bryce", new CostumePie(), false), new Student("Tim",  new CostumeRobot(),false));
+		   f1 = new Floor(new TeacherTony(), new TeacherKosuke(), new Student("Connor",new CostumeRobot(),false), new Student("Hayden", new CostumePie(), false), new Student("Danny",  new CostumeRobot(),false));
 	   }
 	   else if(level ==2)
 	   {
-		   System.out.println("You have completed floor 1, and will now move on to level 3");
-		   f1 = new Floor(new TeacherXu(), new TeacherPaul(), new Student("Sarah",new CostumeRobot(),false), new Student("Kyle", new CostumePie(), false), new Student("Alex",  new CostumeRobot(),false));
+		   System.out.println("You have completed floor 2, and will now move on to level 3");
+		   f1 = new Floor(new TeacherXu(), new TeacherPaul(), new Student("Elizabeth",new CostumeRobot(),false), new Student("Michael", new CostumePie(), false), new Student("Greg",  new CostumeRobot(),false));
 	   }
 	   else if(level==3)
 	   {
-		   System.out.println("You have completed floor 1, and will now move on to level 4");
-		   f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student("Alistar",new CostumeRobot(),false), new Student("Bryce", new CostumePie(), false), new Student("Tim",  new CostumeRobot(),false));
+		   System.out.println("You have completed floor 3, and will now move on to level 4");
+		   f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student("Sarah",new CostumeRobot(),false), new Student("Alistar", new CostumePie(), false), new Student("Peter",  new CostumeRobot(),false));
 	   }
 	   else
 	   {

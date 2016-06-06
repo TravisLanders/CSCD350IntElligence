@@ -1,36 +1,21 @@
 package Final;
 
-public class PotionMountainDew extends Potions
+
+public class PotionMountainDew extends Potion
 {
 	private String name;
-	private String affects;
+	private String effects;
 	private double amount;
 	
 	public PotionMountainDew()
 	{
-		this.name ="Mountain Dew";
-		this.affects= "Attack";
+		super("Moutnain Dew", "Attack");
 		this.amount=50;
 	}
 	
 	public void usePotion(Student s1)
 	{
 		s1.setAttack(s1.getAttack()+this.amount);
-	}
-	
-	
-	
-	@Override
-	public String getName() 
-	{
-		return this.name;
-	}
-
-	@Override
-	public String getAffects() 
-	{
-
-		return this.affects;
 	}
 
 	public double getAmount() 

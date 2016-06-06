@@ -1,36 +1,20 @@
 package Final;
 
-public class PotionBeer extends Potions
+public class PotionBeer extends Potion
 {
 	private String name;
-	private String affects;
+	private String effects;
 	private double amount;
 	
 	public PotionBeer()
 	{
-		this.name ="Beer";
-		this.affects= "Defence";
+		super("Beer", "Defence");
 		this.amount=.50;
 	}
 	
 	public void usePotion(Student s1)
 	{
 		s1.setDefence(s1.getDefence()+this.amount);
-	}
-	
-	
-	
-	@Override
-	public String getName() 
-	{
-		return this.name;
-	}
-
-	@Override
-	public String getAffects() 
-	{
-
-		return this.affects;
 	}
 
 	public double getAmount() 

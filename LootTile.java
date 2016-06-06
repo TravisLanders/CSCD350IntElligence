@@ -28,10 +28,10 @@ public class LootTile extends A_Tile
 		//need to create a method that returns a random item
 	}
 	
-	public  void lootAction(ArrayList<A_Item> inventory)
+	public  void lootAction(Backpack bp)
 	{
-		inventory.add(getWeapon());
-		inventory.add(A_Item.getRandomItem());
+		bp.addWeapon(getWeapon());
+		bp.addPotion(Potion.
 		
 		
 	}
