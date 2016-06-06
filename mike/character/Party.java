@@ -123,4 +123,16 @@ public class Party
 		}
 		return party.get(0);
 	}
+	
+	public Student getLeader()
+	{
+		for(Student student: party)
+		{
+			if(student.isLeader())
+			{
+				return student;
+			}
+		}
+		return party.get(0);
+	}
 }
