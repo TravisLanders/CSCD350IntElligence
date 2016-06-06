@@ -4,15 +4,15 @@ import battle.*;
 
 public abstract class A_Character 
 {
-	private String name;
-	private double totalHP;
-	private double currentHP;
-	private double defence;
-	private A_Costume costume;
-	//private SpecialAttack sa;
-	//private Weapon weapon;
-	private double attack;
-	private boolean isBoss;
+	protected String name;
+	protected double totalHP;
+	protected double currentHP;
+	protected double defence;
+	protected A_Costume costume;
+	//protected SpecialAttack sa;
+	//protected Weapon weapon;
+	protected double attack;
+	protected boolean isBoss;
 	
 	public A_Character(String nameIn, double totalHPIn, double currentHPIn, double defenceIn, A_Costume costumeIn, double attackIn, boolean isBossIn)
 	{

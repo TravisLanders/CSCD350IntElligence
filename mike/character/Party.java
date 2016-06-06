@@ -112,6 +112,11 @@ public class Party
 		return this.backpack;
 	}
 	
+	public void setBackpack(Backpack backpackIn)
+	{
+		this.backpack = backpackIn;
+	}
+	
 	public Student getStudent(String name)
 	{
 		for(Student student : party)

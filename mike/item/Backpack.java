@@ -44,14 +44,14 @@ public class Backpack
 	public Party usePotion(Party party)
 	{
 		displayPotions();
-		if(potions.size() < 0)
+		if(potions.size() <= 0)
 		{
 			System.out.println("You do not have any potions to use");
 		}
 		
 		else
 		{
-			System.out.println("Which character would you like to use your potion on?");
+			//System.out.println("Which character would you like to use your potion on?");
 			Scanner kin = new Scanner(System.in);
 			int input = kin.nextInt();
 			if(input > 4 || input < 1)
@@ -67,12 +67,24 @@ public class Backpack
 				{
 					case(1):
 						str = "Mountain Dew";
+						if(mountainDewCount > 0)
+						{
+							mountainDewCount--;
+						}
 						break;
 					case(2):
 						str = "Top Ramen";
+						if(mountainDewCount > 0)
+						{
+							topRamenCount--;
+						}
 						break;
 					case(3):
 						str = "Beer";
+						if(beerCount > 0)
+						{
+							beerCount--;
+						}
 						break;
 				}
 				
@@ -93,7 +105,7 @@ public class Backpack
 					Student target = party.swap();
 					party.removeMember(target);
 					// use potion on party member;
-					potion.usePotion(target);
+					target = potion.usePotion(target);
 					party.addMember(target);
 				}
 				

@@ -13,7 +13,7 @@ public class BattleBoss extends A_Battle
 	public BattleBoss(Student championIn, Teacher opponentIn, Party partyIn)
 	{
 		super(championIn, (Teacher) opponentIn, partyIn);
-		if(this.opponent.getName().equals("Carol"));
+		if(this.opponent.getName().equals("Carol"))
 		{
 			this.visibleDamage = false;
 		}

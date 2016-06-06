@@ -23,8 +23,27 @@ public class Potion extends A_Item
 		this.amount = amount;
 	}
 
-	public void usePotion(Student s1)
+	
+	public Student usePotion(Student s1) //taken care of in subclasses
 	{
-		// TODO Auto-generated method stub
+		
+		/*
+		if(this.name == "Mountain Dew")
+		{
+			s1.setCurrentHP(s1.getCurrentHP() + 20);
+		}
+		
+		else if(this.name == "Top Ramen")
+		{
+			s1.setCurrentHP(s1.getCurrentHP() + 25);
+		}
+		
+		else
+		{
+			s1.setCurrentHP(s1.getCurrentHP() + 30);
+		}
+		return s1;
+		*/
+		return s1;
 	}
 }

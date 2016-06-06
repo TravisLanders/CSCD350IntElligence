@@ -8,21 +8,21 @@ import costume.*;
 public class Teacher extends A_Character 
 {
 
-	private String name;
-	private int totalHP;
-	private int currentHP;
-	private double defence;
+	protected String name;
+	protected int totalHP;
+	protected int currentHP;
+	protected double defence;
 	
-	private A_Costume costume;
-	//private SpecialAttack sa;
-	//private Weapon weapon;
-	private double attack;
+	protected A_Costume costume;
+	//protected SpecialAttack sa;
+	//protected Weapon weapon;
+	protected double attack;
 	protected String[] quotes; 
 
 	
-	public Teacher(String name, A_Costume costume)//, SpecialAttack sa,Weapon weapon)
+	public Teacher(String nameIn, A_Costume costumeIn)//, SpecialAttack sa,Weapon weapon)
 	{
-		super(name, 100, 100, 15, costume, 15, true);
+		super(nameIn, 100, 100, 15, costumeIn, 15, true);
 //		this.name = name;
 //		this.totalHP = 100;
 //		this.currentHP = 100;

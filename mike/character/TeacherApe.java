@@ -16,7 +16,7 @@ public class TeacherApe extends Teacher
 	
 	public boolean performSpecial(Student s1)
 	{
-		System.out.println("You get nervous about having a finite number of chances to fight the ape. Lose a turn!");
+		System.out.println("You get nervous about having a finite number of chances to fight the APE. Lose a turn!");
 		return true;
 	}
 	
