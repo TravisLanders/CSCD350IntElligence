@@ -1,5 +1,7 @@
 package character;
 
+import java.io.FileNotFoundException;
+
 import costume.*;
 import item.Weapon;
 
@@ -17,14 +19,14 @@ public class Student extends A_Character
 	private double attack;
 	private boolean isTheLeader;
 
-	public Student(String name, A_Costume costume, boolean goodStudent)// SpecialAttack
+	public Student(String name, A_Costume costume, boolean goodStudent) throws FileNotFoundException// SpecialAttack
 																		// sa,Weapon
 																		// weapon)
 	{
 		super(name, 100.0, 100.0, 0.50, costume, 15.0, false);
 		this.goodStudent = goodStudent;
 		this.isTheLeader = false;
-		this.weapon = null;
+		this.weapon = new Weapon();
 	}
 	
 	public void levelMultiplier(int level)

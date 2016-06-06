@@ -25,8 +25,7 @@ public class FloorAndMovementTester
 		A_Costume costume = A_Costume.selectCostume();
 		Student player = new Student(name, costume, true);
 		Party party = new Party(player);
-		ArrayList<Weapon> weapons = new ArrayList<Weapon>();
-		ArrayList<A_Item> items = new ArrayList<A_Item>();
+		Backpack backpack = new Backpack();
 		System.out.println("You are " + name + " wearing a " + costume.toString() + " costume.");
 		System.out.println("Your starting weapon is: " + player.getWeapon().toString());
 		System.out.println("The game will now begin");
@@ -140,7 +139,7 @@ public class FloorAndMovementTester
 
 					} else if (f1.getFloor()[row][col].getType().equals("student"))
 					{
-						Battle battle = new Battle(party.getLeader(), f1.getEnemyTile(row, col).getStudent(), party);
+						BattleStudent battle = new BattleStudent(party.getLeader(), f1.getEnemyTile(row, col).getStudent(), party);
 						battle.beginBattle();
 						Weapon w = new Weapon();
 						System.out.println("You have found a new weapon would you like to keep this weapon? Y/N");
@@ -156,14 +155,14 @@ public class FloorAndMovementTester
 							{
 								party.getLeader().setWeapon(w);
 							} else if (str.equalsIgnoreCase("2"))
-								weapons.add(w);
+								backpack.addWeapon(w);
 							else
-								weapons.add(w);
+								backpack.addWeapon(w);
 						}
-						A_Item item = A_Item.getRandomItem();
+						Potion item = randomPotion();
 						System.out.println("You have recieved a(n) " + item.getName() + " which will affect your "
 								+ item.getEffects() + " and it has been put in your bag of items");
-						items.add(item);
+						backpack.addPotion(item);
 					}
 
 					else if ((f1.getFloor()[row][col].getType().equals("loot")))
@@ -182,14 +181,15 @@ public class FloorAndMovementTester
 							{
 								party.getLeader().setWeapon(w);
 							} else if (str.equalsIgnoreCase("2"))
-								weapons.add(w);
+								backpack.addWeapon(w);
 							else
-								weapons.add(w);
+								backpack.addWeapon(w);
 						}
-						A_Item item = A_Item.getRandomItem();
+						Potion item = randomPotion();
+						//backpack.addPotion(item);
 						System.out.println("You have recieved a(n) " + item.getName() + " which will affect your "
 								+ item.getEffects() + " and it has been put in your bag of items");
-						items.add(item);
+						backpack.addPotion(item);
 					}
 					f1.getFloor()[row][col].setVisibility(true);
 				}
@@ -293,4 +293,25 @@ public class FloorAndMovementTester
 
 	}
 
+	
+	public static Potion randomPotion()
+	{
+		Random random = new Random();
+		random.setSeed(4);
+		int seed = random.nextInt(4);
+		if(seed == 1)
+		{
+			return new PotionMountainDew();
+		}
+		
+		else if(seed == 2)
+		{
+			return new PotionTopRamen();
+		}
+		
+		else
+		{
+			return new PotionBeer();
+		}
+	}	
 }

@@ -2,13 +2,15 @@ import costume.*;
 import character.*;
 import battle.*;
 import DataBaseFiles.*;
+
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class BattleTest
 {
 	protected static ArrayList<String> namesList = new ArrayList<String>();
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws FileNotFoundException
 	{
 		CostumeCop cop = new CostumeCop();
 		CostumeMiner miner = new CostumeMiner();
@@ -55,7 +57,7 @@ public class BattleTest
 		*/
 	}
 	
-	public static Student createStudent(DataBaseManager dbm)
+	public static Student createStudent(DataBaseManager dbm) throws FileNotFoundException
 	{
 		Random random = new Random();
 		//random.setSeed(4);
