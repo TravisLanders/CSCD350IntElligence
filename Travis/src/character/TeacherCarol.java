@@ -24,10 +24,10 @@ public class TeacherCarol extends Teacher
 		this.costume = new CostumeCop();
 		
 		this.setTotalHP(500);
-		this.setTotalHP(500);
+		this.setCurrentHP(500);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.setAttack(50);
 		this.quotes = new String[4];
 		this.quotes[0] = "So what are your thoughts on open sourcing?"; 
 		this.quotes[1] = "Can you believe the government is trying to control the internet?"; 

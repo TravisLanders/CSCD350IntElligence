@@ -44,7 +44,7 @@ public class Party
 		}
 		for(int i = 0; i < party.size(); i++)
 		{
-			System.out.println(party.get(i).getName() + " has a current HP of " + party.get(i).getCurrentHP() +" and is dressed as a " + party.get(i).getCostume().toString());
+			System.out.println(party.get(i).getName() + " has a current HP of " + party.get(i).getCurrentHP() +" and is dressed as a " + party.get(i).getCostume().toString() + " and Weapon:" + party.get(i).getWeapon().toString());
 		}
 		
 		for(int i = 0; i < party.size(); i++)

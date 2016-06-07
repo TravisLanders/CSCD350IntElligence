@@ -25,8 +25,10 @@ public class Tester
 
 		A_Costume costume = A_Costume.selectCostume();
 		Student player = new Student(name, costume, true);
+		//player.setLeader();
 		player.getWeapon().setAttack(40.0);
 		Party party = new Party(player);
+		
 		//ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 		//ArrayList<A_Item> items = new ArrayList<A_Item>();
 		System.out.println("You are " + name + " wearing a " + costume.toString() + " costume.");
@@ -175,8 +177,10 @@ public class Tester
 								//System.out.println("You have traversed all floors and have won the game!");
 								//System.exit(-1);
 							}
-							System.out.println(
-									"You have beaten all bosses on this floor, you now have to option to move up to the next level by pressing 'u' instead of a direction");
+							if(level !=4)
+								System.out.println("You have beaten all bosses on this floor, you now have to option to move up to the next level by pressing 'u' instead of a direction");
+							else
+								System.out.println("You have beaten all bosses on this floor, you now have to option to end the game by pressing 'f instead of a direction");
 						}
 						bosses--;
 
@@ -313,10 +317,11 @@ public class Tester
 			} // end one floor
 			if (level == 1)
 			{
-				//System.out.println("Congrats on finishing the first floor, here is a surpise APE battle to see if you're competent.");
-				//int tries = 3;
-				//BattleBoss ape = new BattleBoss(party.getLeader(),new Ape(), party);
-				System.out.println("You have completed floor 1, and will now move on to level 2");
+				System.out.println("Congrats on finishing the first floor, here is a surpise APE battle to see if you're competent.");
+				int tries = 3;
+				BattleBoss ape = new BattleBoss(party.getLeader(),new TeacherApe(), party);
+				ape.beginBattle();
+				System.out.println("You have completed floor 1 and the ape, and will now move on to level 2");
 				f1 = new Floor(new TeacherTony(), new TeacherKosuke(),
 						new Student("Alistar", new CostumeRobot(), false),
 						new Student("Bryce", new CostumePie(), false), new Student("Tim", new CostumeRobot(), false));

@@ -30,7 +30,7 @@ public class TeacherBrian extends Teacher
 		this.setCurrentHP(100);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.setAttack(20);
 		this.quotes = new String[4];
 		this.quotes[0] = "Yes we use 0 based indexing in CS -_- \"shakes head\"";
 		this.quotes[1] = "Why do I have to deal with the nubes that should be Stu's job";

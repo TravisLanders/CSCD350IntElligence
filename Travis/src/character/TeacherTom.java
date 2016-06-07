@@ -27,7 +27,7 @@ public class TeacherTom extends Teacher
 		this.setCurrentHP(400);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 45;
+		this.setAttack(40);
 		this.quotes = new String[4];
         this.quotes[0] = "Why is there a public variable in your Student Class!";
         this.quotes[1] = "Well looks like team IntElligence wins the steak!";
@@ -45,7 +45,7 @@ public class TeacherTom extends Teacher
 	
 	public boolean specialAgainst()
 	{
-		System.out.println("You call up the University of Idaho and let them know that Stu has been slacking while persuing his PHD, they give him an impromptu assignment, he will miss his next turn");
+		System.out.println("You declare all your member variable public, Tom finds out and misses a turn due to a combination of frustration and dissapointment");
 		return true;
 	}
 	

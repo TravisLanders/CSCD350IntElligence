@@ -27,7 +27,7 @@ public class TeacherPaul extends Teacher
 		this.setCurrentHP(300);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.setAttack(40);
 		this.quotes = new String[4];
 		this.quotes[0] = "If You know a little about quantam mechanics this shouldnt be to difficult";
 		this.quotes[1] = "";

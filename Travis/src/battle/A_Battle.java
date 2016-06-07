@@ -93,6 +93,7 @@ public abstract class A_Battle
 			System.out.println(this.champion.getName() + " is almost defeated! Swap somebody in to continue playing!");
 			this.champion.setCurrentHP(1);
 			this.champion = party.swap();
+			
 		}
 		
 		else if(this.champion.isLeader() && party.getSize() == 1)
@@ -100,6 +101,7 @@ public abstract class A_Battle
 			System.out.println(this.champion.getName() + " has  been defeated, along with the rest of " + this.champion.getName() + "'s Party!\nGame over!");
 			isLive = false;	
 			this.championIsDefeated = true;
+			System.exit(-1);
 		}
 		
 		else

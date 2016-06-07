@@ -27,7 +27,7 @@ public class TeacherBojian extends Teacher
 		this.setCurrentHP(200);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 25;
+		this.setAttack(25);
 		this.quotes = new String[4];
 		this.quotes[0] = "This is easy right?"; 
 		this.quotes[1] = "Pay attention to me. You don't need to take notes- the lecture slides are on canvas"; 

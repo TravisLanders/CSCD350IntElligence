@@ -27,7 +27,7 @@ public class TeacherKosuke extends Teacher
 		this.setCurrentHP(200);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.setAttack(20);
 		this.quotes = new String[4];
 		this.quotes[0] = "NOOO People of the world... what was I talking about?";
 		this.quotes[1] = "I'm making a water powered computer but I have to keep moving the buckets of water by myself";

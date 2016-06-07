@@ -15,6 +15,13 @@ public class Backpack
 	public Backpack()
 	{
 		this.potions = new ArrayList<Potion>();
+		this.topRamenCount=1;
+		this.beerCount=1;
+		this.mountainDewCount=1;
+		addPotion(new PotionTopRamen());
+		addPotion(new PotionBeer());
+		addPotion(new PotionMountainDew());
+		
 		this.weapons = new ArrayList<Weapon>();
 	}
 	
@@ -159,6 +166,7 @@ public class Backpack
 		{
 			System.out.println("No weapon has been swapped");
 		}
+		return party;
 	}
 	
 	protected void displayPotions()
