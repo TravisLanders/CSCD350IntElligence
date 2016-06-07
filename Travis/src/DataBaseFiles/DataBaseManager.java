@@ -16,7 +16,7 @@ public class DataBaseManager
     	{
     		Class.forName("org.sqlite.JDBC");
     		this.dataBase = DriverManager.getConnection("jdbc:sqlite:DataBase.db");
-    		System.out.println("Opened database successfully");
+    		//System.out.println("Opened database successfully");
     		
     		
     		

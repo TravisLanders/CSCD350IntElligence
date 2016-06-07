@@ -88,7 +88,7 @@ public abstract class A_Battle
 
 	protected void onDefeat()
 	{
-		if(this.champion.isLeader() && party.getSize() > 1)
+		if( party.getSize() > 1)
 		{
 			System.out.println(this.champion.getName() + " is almost defeated! Swap somebody in to continue playing!");
 			this.champion.setCurrentHP(1);
@@ -96,7 +96,7 @@ public abstract class A_Battle
 			
 		}
 		
-		else if(this.champion.isLeader() && party.getSize() == 1)
+		else if(  party.getSize() == 1)
 		{
 			System.out.println(this.champion.getName() + " has  been defeated, along with the rest of " + this.champion.getName() + "'s Party!\nGame over!");
 			isLive = false;	
@@ -106,13 +106,13 @@ public abstract class A_Battle
 		
 		else
 		{
-			System.out.println(this.champion.getName() + " has been defeated! Swap somebody in to continue playing!");
+			System.out.println(this.champion.getName() + " has been defeated! Swap somebody in to continue playing!!!");
 			party.removeMember(this.champion);
 			this.champion = party.swap();
 		}
 	}
 	
-	protected void useItem()
+	public void useItem()
 	{
 		System.out.println("Press 'W' to equip a weapon. Press 'I' to use an item. Press 'C' to cancel request.");
 		Scanner kin = new Scanner(System.in);

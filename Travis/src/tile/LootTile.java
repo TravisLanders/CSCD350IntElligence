@@ -34,22 +34,22 @@ public class LootTile extends A_Tile
 	public  Potion getRandomPotion()
 	{
 		Random rand = new Random();
-		int num = rand.nextInt(2);
+		int num = rand.nextInt(3);
 		
 		
 	    if(num ==0)
 		{
-			this.item = new PotionBeer();
+			return new PotionBeer();
 		}
 		
 		else if(num ==1)
 		{
-			this.item = new PotionMountainDew();
+			return  new PotionMountainDew();
 		}
 		
-		else if(num ==3)
+		else if(num ==2)
 		{
-			this.item =new PotionTopRamen();
+			return new PotionTopRamen();
 		}
 		return new PotionMountainDew();
 		

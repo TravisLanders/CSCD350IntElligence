@@ -9,18 +9,18 @@ public class Backpack
 {
 	protected ArrayList<Potion> potions;
 	protected ArrayList<Weapon> weapons;
-	protected int topRamenCount = 0;
-	protected int beerCount = 0;
-	protected int mountainDewCount = 0;
+	protected int topRamenCount;
+	protected int beerCount;
+	protected int mountainDewCount;
 	public Backpack()
 	{
 		this.potions = new ArrayList<Potion>();
-		this.topRamenCount=1;
-		this.beerCount=1;
-		this.mountainDewCount=1;
-		addPotion(new PotionTopRamen());
-		addPotion(new PotionBeer());
-		addPotion(new PotionMountainDew());
+		this.topRamenCount = 0;
+		this.beerCount = 0;
+		this.mountainDewCount = 0;
+//		addPotion(new PotionTopRamen());
+//		addPotion(new PotionBeer());
+//		addPotion(new PotionMountainDew());
 		
 		this.weapons = new ArrayList<Weapon>();
 	}
@@ -51,9 +51,13 @@ public class Backpack
 	
 	public Party usePotion(Party party)
 	{
+		
+		
+		
+		try
+		{
 		displayPotions();
-		if(potions.size() ==0)
-				
+		if(potions.size() == 0)
 		{
 			System.out.println("You do not have any potions to use");
 		}
@@ -93,17 +97,57 @@ public class Backpack
 					{
 						potion = potions.get(i);
 						potions.remove(potion);
+						contains = true;
+						
+						switch(potion.getName())
+						{
+							case("Mountain Dew"):
+								mountainDewCount--;
+								break;
+							case("Top Ramen"):
+								topRamenCount--;
+								break;
+							case("Beer"):
+								beerCount--;
+								break;
+						}
+						
+						break;
 					}
 				}
 				
 				if(contains)
 				{
-					System.out.println("Who would you like to use the potion on?");
+					
+					
+					/*System.out.println("Who would you like to use the potion on?");
 					Student target = party.swap();
 					party.removeMember(target);
 					// use potion on party member;
 					potion.usePotion(target);
 					party.addMember(target);
+					*/
+					System.out.println("Who would you like to use the potion on? ");
+					Student target = null;
+					for(int i = 0; i < party.getSize(); i++)
+					{
+						System.out.println("Press " + (i + 1) + " to use the potion on " + party.getStudent(i).getName());
+					}
+					int index = kin.nextInt();
+					target = party.getStudent(index);
+					//party.removeMember(target);
+					
+					//Weapon temp = target.disarm();
+					//if(temp != null)
+					//{
+					//	weapons.add(temp);
+					//}
+					potion.usePotion(target);
+					//target.setWeapon(weapon);
+					//party.addMember(target);
+					return party;
+					
+					
 				}
 				
 				else
@@ -111,7 +155,17 @@ public class Backpack
 					System.out.println("You do not have any of those potions!");
 				}
 			}
+		
 		}
+			
+			
+			
+		
+	}
+	catch(Exception e)
+	{
+		System.out.println("Bad input yet again, no potion for you");
+	}
 		return party;
 	}
 	

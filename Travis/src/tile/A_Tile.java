@@ -42,7 +42,7 @@ public abstract class A_Tile
 	public Potion randomPotion()
 	{
 		Random random = new Random();
-		random.setSeed(3);
+		//random.setSeed();
 		int seed = random.nextInt(3);
 		if(seed == 1)
 		{

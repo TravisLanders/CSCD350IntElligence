@@ -10,8 +10,8 @@ public class PotionTopRamen extends Potion
 	
 	public PotionTopRamen()
 	{
-		super("Top Ramen", "Adds 10 hp");
-		this.amount = 10;
+		super("Top Ramen", "Health");
+		this.amount = 100;
 	}
 	
 	@Override

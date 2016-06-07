@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
+
+import DataBaseFiles.DataBaseManager;
 import item.*;
 import tile.Floor;
 import character.*;
@@ -31,6 +33,14 @@ public class Tester
 		
 		//ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 		//ArrayList<A_Item> items = new ArrayList<A_Item>();
+		boolean demo = false;
+		if(name.equalsIgnoreCase("Demo"))
+		{
+			player.getWeapon().setAttack(60);
+			player.setCurrentHP(200);
+			player.setTotalHP(200);
+			demo = true;
+		}
 		System.out.println("You are " + name + " wearing a " + costume.toString() + " costume.");
 		System.out.println("Your starting weapon is: " + player.getWeapon().toString());
 		System.out.println("The game will now begin");
@@ -38,12 +48,17 @@ public class Tester
 		int level = 1;
 		boolean nextFloor = false;
 		//Backpack bp = new Backpack();
+		
 
 		boolean over = false;
-
+		DataBaseManager dbm;
+		dbm = new DataBaseManager();
+		Random nameGen = new Random();
+		
 		Floor f1 = new Floor(new TeacherBrian(), new TeacherChris(),
-				new Student(" Elizabeth", new CostumeRobot(), false), new Student("Michael ", new CostumeCop(), false),
-				new Student("Homero", new CostumeSnake(), false));
+				new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false), new Student(dbm.getName(nameGen.nextInt(25)), new CostumeCop(), false),
+				new Student(dbm.getName(nameGen.nextInt(25)), new CostumeSnake(), false));
+		dbm.closeDataBase();
 		System.out.println(" ____");
 		for (int x = 0; x < 4; x++)
 		{
@@ -86,7 +101,7 @@ public class Tester
 			{
 
 				// System.out.println(" ____");
-				System.out.print("w for up, a for left, s for down, d for right");
+				System.out.print("w for up, a for left, s for down, d for right, or press i to use an item or swap weapons");
 				if (bosses == 0)
 				{	
 					if(level ==4)
@@ -129,6 +144,11 @@ public class Tester
 						col++;
 
 					}
+				}
+				if(input.equals("i"))
+				{
+					BattleStudent item = new BattleStudent(party.getLeader(),party.getLeader(),party);
+					item.useItem();
 				}
 				if (input.equals("u") && bosses < 1)
 				{
@@ -315,26 +335,46 @@ public class Tester
 				}
 
 			} // end one floor
-			if (level == 1)
+			
+			if(demo && level ==1)
 			{
+				System.out.println("Congrats on finishing the first floor, here is a surpise APE battle to see if you're competent.");
+				//int tries = 3;
+				BattleBoss ape = new BattleBoss(party.getLeader(),new TeacherApe(), party);
+				ape.beginBattle();
+				System.out.println("You have completed floor 1 and the APE, since this is a demo we will move to floor 4");
+				level =3;
+				
+			}
+			if (level == 1 &&!demo)
+			{
+				dbm = new DataBaseManager();
 				System.out.println("Congrats on finishing the first floor, here is a surpise APE battle to see if you're competent.");
 				int tries = 3;
 				BattleBoss ape = new BattleBoss(party.getLeader(),new TeacherApe(), party);
 				ape.beginBattle();
 				System.out.println("You have completed floor 1 and the ape, and will now move on to level 2");
 				f1 = new Floor(new TeacherTony(), new TeacherKosuke(),
-						new Student("Alistar", new CostumeRobot(), false),
-						new Student("Bryce", new CostumePie(), false), new Student("Tim", new CostumeRobot(), false));
+						new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false),
+						new Student(dbm.getName(nameGen.nextInt(25)), new CostumePie(), false), new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false));
+				dbm.closeDataBase();
+				
 			} else if (level == 2)
 			{
+				dbm = new DataBaseManager();
 				System.out.println("You have completed floor 2, and will now move on to level 3");
-				f1 = new Floor(new TeacherBojian(), new TeacherPaul(), new Student("Sarah", new CostumeRobot(), false),
-						new Student("Kyle", new CostumePie(), false), new Student("Alex", new CostumeRobot(), false));
+				f1 = new Floor(new TeacherBojian(), new TeacherPaul(), new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false),
+						new Student(dbm.getName(nameGen.nextInt(25)), new CostumePie(), false), new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false));
+				dbm.closeDataBase();
+				
 			} else if (level == 3)
 			{
-				System.out.println("You have completed floor 3, and will now move on to level 4");
-				f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student("Alistar", new CostumeRobot(), false),
-						new Student("Bryce", new CostumePie(), false), new Student("Tim", new CostumeRobot(), false));
+				dbm = new DataBaseManager();
+				if(!demo)
+					System.out.println("You have completed floor 3, and will now move on to level 4");
+				f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false),
+						new Student(dbm.getName(nameGen.nextInt(25)), new CostumePie(), false), new Student(dbm.getName(nameGen.nextInt(25)), new CostumeRobot(), false));
+				dbm.closeDataBase();
 			} 
 			else
 			{
