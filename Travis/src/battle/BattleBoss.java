@@ -9,6 +9,8 @@ public class BattleBoss extends A_Battle
 {
 	private boolean championHasUsedSpecial = false;
 	private boolean opponentHasUsedSpecial = false;
+	private int studentStunned = 0;
+	private int teacherStunned = 0;
 	
 	public BattleBoss(Student championIn, Teacher opponentIn, Party partyIn)
 	{
@@ -53,6 +55,14 @@ public class BattleBoss extends A_Battle
 	
 	protected void championAttack()
 	{
+		
+		if(studentStunned>0)
+		{
+			System.out.println(this.opponent.getName() + " has stunned you for this turn");
+			studentStunned--;
+		}
+		else
+		{
 		scanner = new Scanner(System.in);
 		Random random = new Random();
 		System.out.println("Press 'a' to attack. Press 's' to swap. Press 'i' to use an item.");
@@ -77,8 +87,9 @@ public class BattleBoss extends A_Battle
 					if(((Teacher) this.opponent).specialAgainst())
 					{
 						this.championHasUsedSpecial = true;
-						championAttack();
-						championAttack();
+						teacherStunned = 2; 
+						//championAttack();
+						//championAttack();
 					}
 				}
 				//					((Teacher) this.opponent).performSpecial(this.champion);
@@ -91,7 +102,7 @@ public class BattleBoss extends A_Battle
 				break;
 				
 			case "a":
-				damage = (int) (random.nextInt(100) * this.championAttackBonus);
+				damage = (int) (this.champion.getAttack()+ this.champion.getWeapon().getAttack() * this.championAttackBonus *(1.0-this.opponent.getDefence()));
 				this.opponent.setCurrentHP(this.opponent.getCurrentHP() - damage);
 				printOpponentDamage();
 				break;
@@ -105,19 +116,28 @@ public class BattleBoss extends A_Battle
 				break;
 		}
 		checkAlive();	
+		}
 	}
 	
 	protected void opponentAttack()
 	{
+		if(teacherStunned>0)
+		{
+			System.out.println(this.opponent.getName() + " is stunned for this turn!");
+			teacherStunned--;
+		}
+		else
+		{
 		Random random = new Random();
-		random.setSeed(4);
+		//random.setSeed(4);
 		int seed = random.nextInt(4);
 		if(seed == 1 && !opponentHasUsedSpecial)
 		{
 			if(((Teacher) this.opponent).performSpecial(this.champion))
 			{
-				opponentAttack();
-				opponentAttack();
+				studentStunned =2;
+				//opponentAttack();
+				//opponentAttack();
 			}
 //			this.championCanAttack = false;
 //			System.out.println("You have been stunned! You will lose a turn!");
@@ -137,6 +157,7 @@ public class BattleBoss extends A_Battle
 			System.out.println("You have been dealt " + damageDone + " damage by " + this.opponent.getName());
 		}
 		checkAlive();
+		}
 	}
 	
 	protected void onVictory()

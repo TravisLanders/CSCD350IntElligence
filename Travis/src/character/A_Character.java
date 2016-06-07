@@ -70,6 +70,8 @@ public abstract class A_Character
 	public void setCurrentHP(double currentHPIn)
 	{
 		this.currentHP = currentHPIn;
+		if(this.currentHP >=this.totalHP)
+			this.currentHP = this.totalHP;
 	}
 	
 	public double getTotalHP()

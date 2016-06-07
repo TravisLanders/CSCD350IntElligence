@@ -25,6 +25,7 @@ public class Tester
 
 		A_Costume costume = A_Costume.selectCostume();
 		Student player = new Student(name, costume, true);
+		player.getWeapon().setAttack(40.0);
 		Party party = new Party(player);
 		//ArrayList<Weapon> weapons = new ArrayList<Weapon>();
 		//ArrayList<A_Item> items = new ArrayList<A_Item>();
@@ -85,7 +86,12 @@ public class Tester
 				// System.out.println(" ____");
 				System.out.print("w for up, a for left, s for down, d for right");
 				if (bosses == 0)
-					System.out.print(" or press u to advance to the next level");
+				{	
+					if(level ==4)
+						System.out.println("or press f to finish the game as a legend");
+					else
+						System.out.print(" or press u to advance to the next level");
+				}
 				System.out.println();
 				input = kb2.nextLine();
 				if (input.equals("w"))
@@ -126,6 +132,9 @@ public class Tester
 				{
 					nextFloor = true;
 				}
+				if(input.equals("f") && bosses ==0 && level ==4)
+					nextFloor = true;
+					
 				// System.out.println("Row: " + row + " Col: " +col);
 				System.out.println("You have stepped on a " + f1.getFloor()[row][col].getType() + " tile");
 				if (f1.getFloor()[row][col].getVisibility() == false)
@@ -163,8 +172,8 @@ public class Tester
 						{
 							if(level ==4)
 							{
-								System.out.println("You have traversed all floors and have won the game!");
-								System.exit(-1);
+								//System.out.println("You have traversed all floors and have won the game!");
+								//System.exit(-1);
 							}
 							System.out.println(
 									"You have beaten all bosses on this floor, you now have to option to move up to the next level by pressing 'u' instead of a direction");
@@ -225,6 +234,11 @@ public class Tester
 						System.out.println("You have recieved a(n) " + f1.getLootTile(row, col).getItem().getName() + " which will boost your "
 								+ f1.getLootTile(row, col).getItem().getEffects() + " and it has been put in your bag of items");
 						party.getBackpack().addPotion(f1.getLootTile(row, col).getItem());
+					}
+					else
+					{
+						System.out.println("Stepping on a blank tile has healed everyone in your party bt 15 HP");
+						party.blankRegen();
 					}
 					f1.getFloor()[row][col].setVisibility(true);
 				}
@@ -316,10 +330,18 @@ public class Tester
 				System.out.println("You have completed floor 3, and will now move on to level 4");
 				f1 = new Floor(new TeacherTom(), new TeacherStu(), new Student("Alistar", new CostumeRobot(), false),
 						new Student("Bryce", new CostumePie(), false), new Student("Tim", new CostumeRobot(), false));
-			} else
+			} 
+			else
 			{
 				// call final battle with the ladies
-				System.out.println("You have traversed all floors and have won the game!");
+				System.out.println("You have traversed all 4 floors of the building and have come out triumphant, slayer of teachers and King of Nerds, you start to make your way towards the");
+				System.out.println("exit, when you get hit in the back with a chair, by the Chair, Carol Taylor");
+				System.out.println("Carol: You dare try to leave this building without testing your might against a real challenge?");
+				
+				BattleBoss battle = new BattleBoss(party.getLeader(),new TeacherCarol(),party);
+				battle.beginBattle();
+				System.out.println("You have beaten the game, congrats!");
+				gameOver = true;
 			}
 
 			row = 0;
@@ -329,7 +351,14 @@ public class Tester
 			nextFloor = false;
 
 		} // end game
+		
+		
 
+	}
+	
+	public void finalFight()
+	{
+		
 	}
 
 }

@@ -23,8 +23,8 @@ public class TeacherPaul extends Teacher
 		this.name = "Paul";
 		this.costume = new CostumeRobot();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(300);
+		this.setCurrentHP(300);
 		this.defence = .10;
 		//this.weapon = new Weapon();
 		this.attack = 20;
@@ -40,6 +40,7 @@ public class TeacherPaul extends Teacher
 	public boolean performSpecial(Student s1)
 	{
 		System.out.println("Paul talks way over your head because he's a genius and while you're trying to comprehend he sneaks the robot thing in his office up behind for 75 damage");
+		s1.setCurrentHP(s1.getCurrentHP()-75);
 		return false;
 	}
 	

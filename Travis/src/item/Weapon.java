@@ -47,6 +47,7 @@ public class Weapon // extends A_Item
 		
 		int rarity = rRand.nextInt(100) + 1;
 		double rare = 1.0;
+		double ad = rRand.nextInt(40)+10;
 		if (rarity > 75 && rarity < 90)
 		{
 			name = ("The Epic " + adjs.get(adj) + "-" + nouns.get(noun));
@@ -64,7 +65,7 @@ public class Weapon // extends A_Item
 			name = ("The " + adjs.get(adj) + "-" + nouns.get(noun));
 		}
 		this.name = name;
-		this.attack = 20 * rare;
+		this.attack = ad * rare;
 	}
 
 	public String getName()
@@ -75,6 +76,10 @@ public class Weapon // extends A_Item
 	public double getAttack()
 	{
 		return this.attack;
+	}
+	public void setAttack(double attack)
+	{
+		this.attack = attack;
 	}
 
 	public String getEffects()

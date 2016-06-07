@@ -23,11 +23,11 @@ public class TeacherBojian extends Teacher
 		this.name = "Bojian";
 		this.costume = new CostumePie();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(200);
+		this.setCurrentHP(200);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.attack = 25;
 		this.quotes = new String[4];
 		this.quotes[0] = "This is easy right?"; 
 		this.quotes[1] = "Pay attention to me. You don't need to take notes- the lecture slides are on canvas"; 

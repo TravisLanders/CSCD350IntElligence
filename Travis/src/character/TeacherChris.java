@@ -26,8 +26,8 @@ public class TeacherChris extends Teacher
 		this.name = "Chris";
 		this.costume = new CostumeCoffeeCup();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(150);
+		this.setCurrentHP(150);
 		this.defence = .10;
 		//this.weapon = new Weapon();
 		this.attack = 20;

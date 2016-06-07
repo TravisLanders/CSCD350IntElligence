@@ -23,8 +23,8 @@ public class TeacherKosuke extends Teacher
 		this.name = "Kosuke";
 		this.costume = new CostumeConstructionWorker();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(200);
+		this.setCurrentHP(200);
 		this.defence = .10;
 		//this.weapon = new Weapon();
 		this.attack = 20;

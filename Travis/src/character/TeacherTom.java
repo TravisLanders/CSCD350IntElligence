@@ -23,16 +23,16 @@ public class TeacherTom extends Teacher
 		this.name = "Tom";
 		this.costume = new CostumeOptometrist();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(400);
+		this.setCurrentHP(400);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.attack = 45;
 		this.quotes = new String[4];
         this.quotes[0] = "Why is there a public variable in your Student Class!";
         this.quotes[1] = "Well looks like team IntElligence wins the steak!";
         this.quotes[2] = "For todays lecture we will be listening to the musical stylings of Mac Sabbath";
-        this.quotes[3] = "I dont always make a home brew but when I do I make Hopolopagus IPAs. Stay thirsy my class";
+        this.quotes[3] = "I dont always make a home brew but when I do I make Hopolopagus IPAs. Stay thirsty my class";
 	}
 	
 	public String getName(){return this.name;}

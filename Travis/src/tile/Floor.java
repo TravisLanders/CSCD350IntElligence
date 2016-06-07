@@ -12,6 +12,7 @@ public class Floor
 		private A_Tile[][] floor;
 		private Random rand;
 		private int level =0;
+		private int tiles;
 		
 		public A_Tile[][] getFloor(){return this.floor;}
 		
@@ -24,6 +25,7 @@ public class Floor
 			int teachers = 2;
 			int students = 3;
 			int loot = 4;
+			tiles =0;
 			boolean placed = false;
 			for(int x = 0;x<4;x++)
 			{
@@ -31,10 +33,11 @@ public class Floor
 				{
 					while(!placed)
 					{
-						int num = rand.nextInt(4);
+						int num = rand.nextInt(3);
 						if(x==0 && y==0)
 						{
 							floor[x][y] = new BlankTile();
+							tiles++;
 						}
 						
 						if(num == 0 && teachers>0)
@@ -45,6 +48,7 @@ public class Floor
 								floor[x][y] = new BossTile("teacher",t2);
 							teachers--;
 							placed = true;
+							tiles++;
 						}
 						
 						else if(num == 1 && students>0)
@@ -57,16 +61,18 @@ public class Floor
 								floor [x][y] = new EnemyTile(s3);
 							students--;
 							placed = true;
+							tiles++;
 						}
 						else if(num ==2 && loot>0)
 						{
 							floor[x][y]= new LootTile();
 							loot--;
 							placed = true;
+							tiles++;
 						}
 						else
 						{
-							if(students>0)
+							if(students>0 && 16-tiles==(students+teachers) )
 							{
 								if(students ==3)
 									floor [x][y] = new EnemyTile(s1);
@@ -76,8 +82,9 @@ public class Floor
 									floor [x][y] = new EnemyTile(s3);
 								students--;
 								placed = true;
+								tiles++;
 							}
-							else if(teachers>0)
+							else if(teachers>0 && 16-tiles==(students+teachers))
 							{
 								if(teachers ==2)
 									floor[x][y] = new BossTile("teacher",t1);
@@ -85,12 +92,14 @@ public class Floor
 									floor[x][y] = new BossTile("teacher",t2);
 								teachers--;
 								placed = true;
+								tiles++;
 							}
 							
 							else
 							{
 								floor[x][y] = new BlankTile();
 								placed = true;
+								tiles++;
 							}
 						}
 						

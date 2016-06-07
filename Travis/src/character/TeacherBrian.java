@@ -26,8 +26,8 @@ public class TeacherBrian extends Teacher
 		this.name = "Brian";
 		this.costume = new CostumeSnake();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(100);
+		this.setCurrentHP(100);
 		this.defence = .10;
 		//this.weapon = new Weapon();
 		this.attack = 20;
@@ -43,6 +43,7 @@ public class TeacherBrian extends Teacher
 	public boolean performSpecial(Student s1)
 	{
 		System.out.println("Brian animates a huge bat and whacks you with it somehow, you lose 45 health");
+		s1.setCurrentHP(s1.getCurrentHP()-45);
 		return false;
 	}
 	

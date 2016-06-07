@@ -126,6 +126,7 @@ public abstract class A_Battle
 		{
 			String name = this.champion.getName();
 			this.party = this.party.getBackpack().usePotion(this.party);
+			
 			this.champion = this.party.getStudent(name);
 		}
 		

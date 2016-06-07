@@ -69,7 +69,7 @@ public class BattleStudent extends A_Battle
 			break;
 
 		case "a":
-			damage = (int) (random.nextInt(100) * this.championAttackBonus);
+			damage = (int) (this.champion.getAttack()+ this.champion.getWeapon().getAttack() * this.championAttackBonus *(1.0-this.opponent.getDefence())*1.25 );
 			this.opponent.setCurrentHP(this.opponent.getCurrentHP() - damage);
 			printOpponentDamage();
 			break;
@@ -91,7 +91,7 @@ public class BattleStudent extends A_Battle
 	protected void opponentAttack()
 	{
 		Random random = new Random();
-		int damageDone = random.nextInt(15);
+		int damageDone = (int) (this.opponent.getAttack() *(1.0-this.champion.getDefence())*.75 +random.nextInt(20));
 		this.champion.setCurrentHP(this.champion.getCurrentHP() - damageDone);
 		System.out.println("You have been dealt " + damageDone + " damage by " + this.opponent.getName());
 		checkAlive();

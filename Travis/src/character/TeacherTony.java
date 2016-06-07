@@ -23,16 +23,16 @@ public class TeacherTony extends Teacher
 		this.name = "Tony";
 		this.costume = new CostumeWizard();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(250);
+		this.setCurrentHP(250);
 		this.defence = .10;
 		//this.weapon = new Weapon();
 		this.attack = 20;
 		this.quotes = new String[4];
-		this.quotes[0] = ""; 
-		this.quotes[1] = ""; 
-		this.quotes[2] = ""; 
-		this.quotes[3] = ""; 
+		this.quotes[0] = "AGREE?!"; 
+		this.quotes[1] = "AGREE?"; 
+		this.quotes[2] = "AGREEEEEE?!"; 
+		this.quotes[3] = "AGREE?"; 
 	}
 	
 	

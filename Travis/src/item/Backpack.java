@@ -45,7 +45,8 @@ public class Backpack
 	public Party usePotion(Party party)
 	{
 		displayPotions();
-		if(potions.size() == 0)
+		if(potions.size() ==0)
+				
 		{
 			System.out.println("You do not have any potions to use");
 		}
@@ -109,6 +110,8 @@ public class Backpack
 	
 	public Party equipWeapon(Party party)
 	{
+		try
+		{
 		if(weapons.size() < 1)
 		{
 			System.out.println("You do not have any weapons to equip");
@@ -119,6 +122,7 @@ public class Backpack
 			displayWeapons();
 			Scanner kin = new Scanner(System.in);
 			int input = kin.nextInt();
+			kin.nextLine();
 			if(input > weapons.size() + 1 || input < 1)
 			{
 				System.out.println("Please enter a valid weapon index.");
@@ -129,8 +133,14 @@ public class Backpack
 				Weapon weapon = weapons.get(input - 1);
 				weapons.remove(weapon);			
 				System.out.println("Who would you like to equip the weapon to?");
-				Student target = party.swap();
-				party.removeMember(target);
+				Student target = null;
+				for(int i = 0; i < party.getSize(); i++)
+				{
+					System.out.println("Press " + (i + 1) + " to equip the weapon to " + party.getStudent(i).getName());
+				}
+				int index = kin.nextInt();
+				target = party.getStudent(index);
+				//party.removeMember(target);
 				
 				Weapon temp = target.disarm();
 				if(temp != null)
@@ -139,11 +149,16 @@ public class Backpack
 				}
 				
 				target.setWeapon(weapon);
-				party.addMember(target);
+				//party.addMember(target);
 				return party;
 			}
 		}
 		return party;
+		}
+		catch(Exception e)
+		{
+			System.out.println("No weapon has been swapped");
+		}
 	}
 	
 	protected void displayPotions()
@@ -162,7 +177,7 @@ public class Backpack
 		for(Weapon weapon: weapons)
 		{
 			i++;
-			System.out.println(i + ") " + weapon.getName());
+			System.out.println(i + ") " + weapon.getName() + " with " + weapon.getAttack() + " attack.");
 		}
 		i++;
 		System.out.println(i + ") Cancel request");

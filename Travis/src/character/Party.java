@@ -8,7 +8,7 @@ public class Party
 {
 	private ArrayList<Student> party = new ArrayList<Student>();
 	private Student leader;
-	Backpack backpack;
+	private Backpack backpack;
 
 	public Party(Student player)
 	{
@@ -37,6 +37,11 @@ public class Party
 	public Student swap()
 	{
 		Scanner scanner = new Scanner(System.in);
+		if(party.size()==1 && party.get(0).getCurrentHP()<=0)
+		{
+			System.out.println("You have been defeated, GAME OVER!");
+			System.exit(-1);
+		}
 		for(int i = 0; i < party.size(); i++)
 		{
 			System.out.println(party.get(i).getName() + " has a current HP of " + party.get(i).getCurrentHP() +" and is dressed as a " + party.get(i).getCostume().toString());
@@ -72,6 +77,8 @@ public class Party
 			
 			scanner.close();
 			//return swap();
+			System.out.println("You have been defeated, GAME OVER!");
+			System.exit(-1);
 			return swap();
 		}		
 	}
@@ -100,7 +107,12 @@ public class Party
 	{
 		return this.party.size();
 	}
-	
+	public Student getStudent(int index)
+	{
+		if(index >0 && index<=party.size())
+			return party.get(index-1);
+		return party.get(0);
+	}
 	public boolean removeMember(Student characterIn)
 	{
 		if(characterIn.isLeader())
@@ -139,5 +151,12 @@ public class Party
 			}
 		}
 		return party.get(0);
+	}
+	
+	public void blankRegen(){
+		for(int x =0;x<this.getSize();x++)
+		{
+			party.get(x).setCurrentHP(party.get(x).getCurrentHP()+15);
+		}
 	}
 }

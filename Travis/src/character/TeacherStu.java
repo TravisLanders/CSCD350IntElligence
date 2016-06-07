@@ -24,11 +24,11 @@ public class TeacherStu extends Teacher
 		this.name = "Stu";
 		this.costume = new CostumePenguin();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(450);
+		this.setCurrentHP(450);
 		this.defence = .10;
 		//this.weapon = new Weapon();
-		this.attack = 20;
+		this.setAttack(40);
 		this.quotes = new String[4];
 		this.quotes[0] = "Im thinking of dropping the shell assignment monday and having it due monday night what do you think?";
 		this.quotes[1] = "Just rememeber don't leak memory or else I'll take off points off you and maybe the next guy on roster";
@@ -40,8 +40,8 @@ public class TeacherStu extends Teacher
 	
 	public boolean performSpecial(Student s1)
 	{
-		Random rand = new Random(150);
-		int damage = rand.nextInt();
+		Random rand = new Random();
+		int damage = rand.nextInt(150);
 		System.out.println("Stu uses Valgrind to check for memory leaks and finds " + damage + ", you have been dealt this much damage");
 		s1.setCurrentHP(s1.getCurrentHP()-damage);
 		return false;

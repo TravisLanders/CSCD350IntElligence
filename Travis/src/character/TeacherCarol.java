@@ -23,8 +23,8 @@ public class TeacherCarol extends Teacher
 		this.name = "Carol";
 		this.costume = new CostumeCop();
 		
-		this.totalHP = 150;
-		this.currentHP = 150;
+		this.setTotalHP(500);
+		this.setTotalHP(500);
 		this.defence = .10;
 		//this.weapon = new Weapon();
 		this.attack = 20;
@@ -39,14 +39,15 @@ public class TeacherCarol extends Teacher
 	
 	public boolean performSpecial(Student s1)
 	{
-		System.out.println("Brian animates a huge bat and whacks you with it somehow, you lose 45 health");
-		return false;
+		System.out.println("Carol disiabled your Eagle card and runs though a locked door lose a turn!");
+		return true;
 	}
 	
 	public boolean specialAgainst()
 	{
-		System.out.println("You never show up to his class and still turn in assignments, Brian doesn't like that, he is frustrated and misses a turn");
-		return true;
+		System.out.println("You are close to the end of long journey through the CEB, and you unleash a massive attack against Carol in hope of finally being done");
+		this.setCurrentHP(this.getCurrentHP()-150);
+		return false;
 	}
 	
 	
